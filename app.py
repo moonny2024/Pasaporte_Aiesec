@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, session
+from flask import Flask, url_for, render_template, request, redirect, session
 import sqlite3
 
 app = Flask(__name__)
@@ -45,6 +45,12 @@ def login():
 
     return render_template("login.html")
 
+@app.route('/logout', methods=['GET'])
+def logout():
+    session.clear()
+    return redirect(url_for('login'))
+
+
 @app.route("/dashboard")
 def dashboard():
     if "id" not in session:
@@ -62,12 +68,15 @@ def dashboard():
     total_badges = len(badges)
     participation = min(100, total_badges * 10)  # ejemplo simple
 
+    porcentaje = participation  # o el valor que quieras
     return render_template(
-        "dashboard_user.html", 
-        user=user, 
+        "dashboard_user.html",
+        user=user,
         badges=badges,
-        participation=participation
+        participation=participation,
+        porcentaje=porcentaje
     )
+
 
 @app.route("/admin")
 def admin():
@@ -78,6 +87,12 @@ def admin():
     users = conn.execute("SELECT * FROM users").fetchall()
 
     return render_template("dashboard_admin.html", users=users)
+
+@app.route("/usuario")
+def usuario():
+    porcentaje = 75  # o el valor que calcules
+    return render_template("index.html", porcentaje=porcentaje)
+
 
 if __name__ == "__main__":
     app.run(debug=True)

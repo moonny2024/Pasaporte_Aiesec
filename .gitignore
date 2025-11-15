@@ -1,4 +1,48 @@
-__pycache__/
+# ─────────────────────────────
+# ARCHIVOS DEL PROYECTO FLASK
+# ─────────────────────────────
+
+# Base de datos SQLite
 database.db
-.env
+*.sqlite
+*.sqlite3
+
+# Archivos generados por Python
+__pycache__/
 *.pyc
+*.pyo
+*.pyd
+
+# Entornos virtuales
+venv/
+env/
+.venv/
+ENV/
+
+# Archivos de caché
+*.cache
+*.log
+
+# Configuración local
+instance/
+.env
+*.env
+
+# Compilaciones / distribución
+build/
+dist/
+*.egg-info
+
+# Archivos de Flask/Werkzeug
+flask_session/
+session/
+
+# Archivos del editor o IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Carpetas que no deberían subirse
+uploads/
+static/uploads/
