@@ -160,29 +160,34 @@ def _render_user_section(active):
         active=active
     )
 
+# app.py (Ejemplo de cómo Flask debe manejar estas rutas)
+
 @app.route('/perfil')
 def perfil():
-    return _render_user_section('perfil.html')
+    # ¡CORRECCIÓN CLAVE! Pasar la variable 'active'
+    return render_template('profile.html', active='perfil', user=...) 
 
 @app.route('/sellos')
 def sellos():
-    return _render_user_section('sellos.html')
+    # Obtener datos de sellos aquí
+    return render_template('stamps.html', active='sellos', )
 
 @app.route('/logros')
 def logros():
-    return _render_user_section('logros.html')
+    # Asumimos que los logros también usan la lista de 'badges'
+    return render_template('achievements.html', active='logros') 
 
+# ... y así sucesivamente para todas las rutas.
 @app.route('/progreso')
 def progreso():
-    return _render_user_section('progreso.html')
-
+    return render_template('progress.html', active='progreso')
 @app.route('/eventos')
-def eventos():
-    return _render_user_section('eventos.html')
+def eventos():  
+    return render_template('events.html', active='eventos')
 
 @app.route('/cumpleanos')
 def cumpleanos():
-    return _render_user_section('cumpleanos.html')
+    return render_template('birthday.html', active='cumpleanos')
 
 if __name__ == "__main__":
     app.run(debug=True)
