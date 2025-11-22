@@ -34,11 +34,11 @@
 
     <!-- NAVBAR -->
     <nav class="navbar navbar-dark bg-dark px-4">
-        <a class="navbar-brand" href="#">Panel de Administración</a>
+        <a class="navbar-brand" href="{{ url_for('admin') }}">Panel de Administración</a>
 
         <div class="d-flex gap-2">
-            <a href="/admin" class="btn btn-outline-light btn-sm">Dashboard</a>
-            <a href="/logout" class="btn btn-outline-light btn-sm">Cerrar sesión</a>
+            <a href="{{ url_for('admin') }}" class="btn btn-outline-light btn-sm">Dashboard</a>
+            <a href="{{ url_for('logout') }}" class="btn btn-outline-light btn-sm">Cerrar sesión</a>
         </div>
     </nav>
 

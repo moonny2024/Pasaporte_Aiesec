@@ -29,7 +29,9 @@
             <p class="year-text">2025</p>
         </div>
 
-        <button id="continueBtn" class="continue-button">CONTINUAR</button>
+        <form id="continueForm" action="{{ url_for('continuar') }}" method="post">
+            <button id="continueBtn" type="submit" class="continue-button">CONTINUAR</button>
+        </form>
 
     </div>
 

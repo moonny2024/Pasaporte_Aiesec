@@ -94,5 +94,95 @@ def usuario():
     return render_template("index.html", porcentaje=porcentaje)
 
 
+
+
+@app.route('/continuar', methods=['POST'])
+def continuar():
+    # Si el usuario tiene sesión, redirige a la vista que muestra
+    # la plantilla `dashboard_user.html`; si no, al login.
+    if session.get('id'):
+        return redirect(url_for('dashboard_user'))
+    return redirect(url_for('login'))
+
+
+@app.route('/dashboard_user')
+def dashboard_user():
+    # Muestra la plantilla `dashboard_user.html` con datos del usuario
+    if "id" not in session:
+        return redirect(url_for('login'))
+
+    conn = get_db()
+    user = conn.execute(
+        "SELECT * FROM users WHERE id=?", (session["id"],)
+    ).fetchone()
+
+    badges = conn.execute(
+        "SELECT * FROM badges WHERE user_id=?", (session["id"],)
+    ).fetchall()
+
+    total_badges = len(badges)
+    participation = min(100, total_badges * 10)
+    porcentaje = participation
+
+    return render_template(
+        "dashboard_user.html",
+        user=user,
+        badges=badges,
+        participation=participation,
+        porcentaje=porcentaje,
+        active='perfil'
+    )
+
+
+def _render_user_section(active):
+    """Renderiza el dashboard de usuario con secciones dinámicas sin crear nuevas plantillas."""
+    if 'id' not in session:
+        return redirect(url_for('login'))
+    conn = get_db()
+    user = conn.execute("SELECT * FROM users WHERE id=?", (session['id'],)).fetchone()
+    badges_rows = conn.execute("SELECT id, name, image, date FROM badges WHERE user_id=?", (session['id'],)).fetchall()
+    badges = [dict(id=r['id'], name=r['name'], image=r['image'], date=r['date']) for r in badges_rows]
+    users_rows = conn.execute("SELECT id, fullname, email FROM users").fetchall()
+    users = [dict(id=r['id'], fullname=r['fullname'], email=r['email']) for r in users_rows]
+    events = [
+        {'id': 1, 'title': 'Leadership Summit', 'date': '2025-11-22'},
+        {'id': 2, 'title': 'Workshop: Team Building', 'date': '2025-12-05'},
+    ]
+    total_badges = len(badges)
+    porcentaje = min(100, total_badges * 10)
+    return render_template(
+        'dashboard_user.html',
+        user=user,
+        badges=badges,
+        users=users,
+        events=events,
+        porcentaje=porcentaje,
+        active=active
+    )
+
+@app.route('/perfil')
+def perfil():
+    return _render_user_section('perfil.html')
+
+@app.route('/sellos')
+def sellos():
+    return _render_user_section('sellos.html')
+
+@app.route('/logros')
+def logros():
+    return _render_user_section('logros.html')
+
+@app.route('/progreso')
+def progreso():
+    return _render_user_section('progreso.html')
+
+@app.route('/eventos')
+def eventos():
+    return _render_user_section('eventos.html')
+
+@app.route('/cumpleanos')
+def cumpleanos():
+    return _render_user_section('cumpleanos.html')
+
 if __name__ == "__main__":
     app.run(debug=True)

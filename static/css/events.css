@@ -1,0 +1,223 @@
+/* Variables de color */
+:root {
+    --color-bg-page: #F8F8F8;
+    --color-text-dark: #333;
+    --color-text-light: #666;
+    --color-header-icon: #8B0000; /* Rojo AIESEC */
+
+    /* Colores para etiquetas de eventos */
+    --tag-conference: #D7263D; /* Rojo */
+    --tag-workshop: #4C99E5;   /* Azul */
+    --tag-social: #9ACD32;     /* Verde */
+    --color-registered: #28a745;
+    --color-button-reg: #007bff;
+}
+
+/* Base y Reset */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: var(--color-bg-page);
+    color: var(--color-text-dark);
+    line-height: 1.5;
+    min-height: 100vh;
+}
+
+.events-page-container {
+    max-width: 900px; 
+    margin: 40px auto; 
+    padding: 20px;
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* ---------------------------------------------------------------------- */
+/* 1. ENCABEZADO Y FILTROS */
+/* ---------------------------------------------------------------------- */
+.page-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 25px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #EEE;
+}
+
+.header-icon {
+    font-size: 1.8em;
+    color: var(--color-header-icon);
+    margin-right: 15px;
+}
+
+.page-header h1 {
+    font-size: 1.6em;
+    font-weight: 700;
+}
+
+.filters-bar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 30px;
+}
+
+.filter-btn {
+    padding: 8px 15px;
+    border: 1px solid #DDD;
+    border-radius: 20px;
+    background-color: transparent;
+    color: var(--color-text-light);
+    font-size: 0.9em;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.filter-btn.active, .filter-btn:hover {
+    background-color: var(--color-header-icon);
+    color: white;
+    border-color: var(--color-header-icon);
+}
+
+/* ---------------------------------------------------------------------- */
+/* 2. LISTADO DE EVENTOS (Tarjetas) */
+/* ---------------------------------------------------------------------- */
+.events-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.event-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    transition: transform 0.2s;
+    border-left: 5px solid #DDD; /* Borde predeterminado */
+}
+
+.event-card:hover {
+    transform: translateY(-2px);
+}
+
+/* Borde de color según tipo de evento */
+.event-type-conference { border-left-color: var(--tag-conference); }
+.event-type-workshop { border-left-color: var(--tag-workshop); }
+.event-type-social { border-left-color: var(--tag-social); }
+
+.card-details {
+    flex-grow: 1;
+    margin-right: 20px;
+}
+
+.event-type-tag {
+    display: inline-block;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 0.7em;
+    font-weight: 700;
+    color: white;
+    margin-bottom: 5px;
+}
+
+.tag-conference { background-color: var(--tag-conference); }
+.tag-workshop { background-color: var(--tag-workshop); }
+.tag-social { background-color: var(--tag-social); }
+
+.event-name {
+    font-size: 1.1em;
+    font-weight: 700;
+    margin-bottom: 5px;
+}
+
+.event-location {
+    font-size: 0.9em;
+    color: var(--color-text-light);
+}
+
+.event-location .fas {
+    margin-right: 5px;
+}
+
+.card-action {
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+}
+
+.event-date-box {
+    text-align: center;
+    margin-right: 15px;
+    border-right: 1px solid #EEE;
+    padding-right: 15px;
+}
+
+.event-date-box .day {
+    display: block;
+    font-size: 1.5em;
+    font-weight: 700;
+    line-height: 1;
+}
+
+.event-date-box .month {
+    display: block;
+    font-size: 0.75em;
+    font-weight: 700;
+    color: var(--color-text-light);
+}
+
+.action-btn {
+    padding: 8px 15px;
+    border: none;
+    border-radius: 20px;
+    font-size: 0.9em;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.register-btn {
+    background-color: var(--color-button-reg);
+    color: white;
+}
+
+.register-btn:hover {
+    background-color: #0056b3;
+}
+
+.registered-btn {
+    background-color: var(--color-registered);
+    color: white;
+}
+
+/* ---------------------------------------------------------------------- */
+/* 3. MEDIA QUERY PARA MÓVIL (Apilar elementos) */
+/* ---------------------------------------------------------------------- */
+@media (max-width: 650px) {
+    .event-card {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .card-details {
+        margin-bottom: 15px;
+        margin-right: 0;
+    }
+
+    .card-action {
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    .event-date-box {
+        border-right: none;
+        padding-right: 0;
+    }
+}

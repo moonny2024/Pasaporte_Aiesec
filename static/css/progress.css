@@ -1,0 +1,174 @@
+/* Variables de color */
+:root {
+    --progress-color-text-dark: #333;
+    --progress-color-text-light: #666;
+    --progress-color-accent-pink: #F74C68;
+    --progress-color-bg-white: #FFFFFF;
+    
+    /* Colores para stats */
+    --progress-stat-blue: #4C99E5; 
+    --progress-stat-green: #9ACD32; 
+    --progress-stat-purple: #9370DB; 
+    
+    /* Gradiente del botón CTA */
+    --progress-cta-gradient: linear-gradient(90deg, #4C99E5 0%, #9370DB 100%);
+    --progress-color-footer-text: #888;
+}
+
+/* El contenedor principal de la página de progreso, centrado dentro de main-content */
+.progress-page-container {
+    max-width: 450px; 
+    margin: 20px auto; 
+    text-align: center;
+}
+
+/* El área de contenido con el fondo degradado y el padding */
+.progress-content-area {
+    padding: 20px;
+    background: linear-gradient(180deg, #F0F0FF 0%, #FFFFFF 100%);
+    color: var(--progress-color-text-dark);
+    border-radius: 8px; 
+}
+
+
+/* ---------------------------------------------------------------------- */
+/* 1. SECCIÓN DE CITA Y PERFIL */
+/* ---------------------------------------------------------------------- */
+.progress-quote-section {
+    padding: 30px 0;
+    margin-bottom: 20px;
+}
+
+.progress-profile-photo {
+    width: 100px;
+    height: 100px;
+    margin: 0 auto 20px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 3px solid white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.progress-photo-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.progress-quote {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3em;
+    font-style: italic;
+    color: var(--progress-color-text-dark);
+    margin: 15px 0 25px;
+    padding: 0 10px;
+}
+
+.progress-aiesec-experience {
+    font-weight: 700;
+    color: var(--progress-color-text-light);
+    font-size: 0.9em;
+}
+
+.progress-aiesec-experience .fas {
+    color: var(--progress-color-accent-pink);
+    margin: 0 5px;
+}
+
+/* ---------------------------------------------------------------------- */
+/* 2. SECCIÓN DE PROGRESO (Stats) */
+/* ---------------------------------------------------------------------- */
+.progress-stats-section {
+    background-color: var(--progress-color-bg-white);
+    padding: 25px 20px;
+    border-radius: 18px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+    margin-bottom: 30px;
+}
+
+.progress-section-title {
+    font-size: 1.2em;
+    font-weight: 700;
+    margin-bottom: 25px;
+    color: var(--progress-color-text-dark);
+}
+
+.progress-stats-grid {
+    display: flex;
+    justify-content: space-around;
+    gap: 15px;
+}
+
+.progress-stat-item {
+    text-align: center;
+}
+
+.progress-stat-icon {
+    width: 65px;
+    height: 65px;
+    border-radius: 50%;
+    margin: 0 auto 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5em;
+    /* Color del ícono se define en los selectores específicos */
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+    background-color: #EEE; 
+}
+
+/* Colores y sombreado para los íconos (similar a la imagen) */
+.progress-stat-blue { color: var(--progress-stat-blue); background: linear-gradient(135deg, #E6F3FF, var(--progress-color-bg-white)); box-shadow: 0 0 0 2px var(--progress-stat-blue) inset; }
+.progress-stat-green { color: var(--progress-stat-green); background: linear-gradient(135deg, #F3FFE6, var(--progress-color-bg-white)); box-shadow: 0 0 0 2px var(--progress-stat-green) inset; }
+.progress-stat-purple { color: var(--progress-stat-purple); background: linear-gradient(135deg, #F3E6FF, var(--progress-color-bg-white)); box-shadow: 0 0 0 2px var(--progress-stat-purple) inset; }
+
+
+.progress-stat-number {
+    display: block;
+    font-size: 1.5em;
+    font-weight: 700;
+    color: var(--progress-stat-blue); 
+}
+
+.progress-stat-item:nth-child(2) .progress-stat-number { color: var(--progress-stat-green); } 
+.progress-stat-item:nth-child(3) .progress-stat-number { color: var(--progress-stat-purple); } 
+
+
+.progress-stat-label {
+    display: block;
+    font-size: 0.8em;
+    color: var(--progress-color-text-light);
+    margin-top: 2px;
+}
+
+/* ---------------------------------------------------------------------- */
+/* 3. BOTÓN CTA Y PIE DE PÁGINA */
+/* ---------------------------------------------------------------------- */
+.progress-cta-button {
+    width: 100%;
+    padding: 15px 20px;
+    border: none;
+    border-radius: 30px;
+    background: var(--progress-cta-gradient);
+    color: white;
+    font-size: 1em;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+    transition: transform 0.2s;
+}
+
+.progress-cta-button:hover {
+    transform: translateY(-2px);
+}
+
+.progress-cta-icon {
+    margin: 0 8px;
+    font-size: 1.1em;
+}
+
+.progress-footer-text {
+    margin-top: 20px;
+    font-size: 0.75em;
+    color: var(--progress-color-footer-text);
+}

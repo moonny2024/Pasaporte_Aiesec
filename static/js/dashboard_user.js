@@ -22,6 +22,28 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
 
+        // 4. También permitir que al hacer click en el header se muestre/oculte
+        // el sidebar, pero sin activar la navegación si el click fue sobre
+        // un enlace o el botón hamburguesa.
+        const headerContent = document.querySelector('.header-content');
+        if (headerContent) {
+            headerContent.addEventListener('click', (ev) => {
+                // Si el click fue sobre un enlace (<a>) o sobre el botón de menú, ignorar
+                if (ev.target.closest('a') || ev.target.closest('.menu-toggle')) return;
+
+                // Alternar el sidebar igual que el botón
+                sidebar.classList.toggle('expanded');
+                const icon = menuToggle.querySelector('i');
+                if (sidebar.classList.contains('expanded')) {
+                    icon.classList.remove('fa-bars');
+                    icon.classList.add('fa-times');
+                } else {
+                    icon.classList.remove('fa-times');
+                    icon.classList.add('fa-bars');
+                }
+            });
+        }
+
         // Opcional: Cerrar el menú si se hace clic en un elemento de navegación (para UX móvil)
         const navLinks = document.querySelectorAll('.nav-list a');
         navLinks.forEach(link => {
@@ -34,4 +56,6 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
     }
+
+    // Navegación directa ahora (sin fetch dinámico)
 });

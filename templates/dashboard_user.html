@@ -15,10 +15,10 @@
                 <i class="fas fa-bars"></i>
             </button>
             <h1 class="header-title">
-                Gen Phoenix Dashboard
+                <a href="{{ url_for('dashboard') }}" style="color:inherit; text-decoration:none">Gen Phoenix Dashboard</a>
             </h1>
             <div class="user-area">
-                <i class="fas fa-user-circle"></i>
+                <a href="{{ url_for('usuario') }}" title="Mi perfil" style="color:inherit; text-decoration:none"><i class="fas fa-user-circle"></i></a>
             </div>
         </div>
     </header>
@@ -26,44 +26,85 @@
     <div class="dashboard-container">
         <nav class="sidebar" id="sidebarMenu">
             <ul class="nav-list">
-                <li class="nav-item active">
-                    <a href="#"><i class="far fa-circle nav-icon"></i> Perfil</a>
+                <li class="nav-item">
+                    <a href="{{ url_for('api_perfil') }}"><i class="far fa-circle nav-icon"></i> Perfil</a>
                 </li>
                 <li class="nav-item">
-                    <a href="#"><i class="far fa-circle nav-icon"></i> Sellos</a>
+                    <a href="{{ url_for('api_sellos') }}"><i class="far fa-circle nav-icon"></i> Sellos</a>
                 </li>
                 <li class="nav-item">
-                    <a href="#"><i class="far fa-circle nav-icon"></i> Logros y recompensas</a>
+                    <a href="{{ url_for('api_logros') }}"><i class="far fa-circle nav-icon"></i> Logros y recompensas</a>
                 </li>
                 <li class="nav-item">
-                    <a href="#"><i class="far fa-circle nav-icon"></i> Tu progreso</a>
+                    <a href="{{ url_for('api_progreso') }}"><i class="far fa-circle nav-icon"></i> Tu progreso</a>
                 </li>
                 <li class="nav-item">
-                    <a href="#"><i class="far fa-circle nav-icon"></i> Eventos</a>
+                    <a href="{{ url_for('api_eventos') }}"><i class="far fa-circle nav-icon"></i> Eventos</a>
                 </li>
                 <li class="nav-item">
-                    <a href="#"><i class="far fa-circle nav-icon"></i> Cumpleaños</a>
+                    <a href="{{ url_for('api_cumpleanos') }}"><i class="far fa-circle nav-icon"></i> Cumpleaños</a>
                 </li>
             </ul>
         </nav>
 
         <main class="main-content">
-            <h2>Bienvenido a tu Panel de Liderazgo</h2>
-            <div class="card-grid">
-                <div class="card">
-                    <h3>Progreso</h3>
-                    <p>Revisa tus metas y avances.</p>
+            {% if active == 'perfil' %}
+                <h2>Perfil</h2>
+                <p><strong>ID:</strong> {{ user.id }}</p>
+                <p><strong>Email:</strong> {{ user.email }}</p>
+                <p><strong>Rol:</strong> {{ user.role }}</p>
+            {% elif active == 'sellos' %}
+                <h2>Mis Sellos</h2>
+                {% if badges %}
+                <div class="badges-container">
+                    {% for b in badges %}
+                    <div class="badge">
+                        <img src="{{ url_for('static', filename='img/insignias/' + (b.image or 'placeholder.png')) }}" alt="{{ b.name }}">
+                        <div>{{ b.name }}</div>
+                        <small>{{ b.date }}</small>
+                    </div>
+                    {% endfor %}
                 </div>
-                <div class="card">
-                    <h3>Últimos Sellos</h3>
-                    <p>Tienes 3 sellos nuevos por reclamar.</p>
+                {% else %}<p>No tienes sellos todavía.</p>{% endif %}
+            {% elif active == 'logros' %}
+                <h2>Logros y recompensas</h2>
+                {% if badges %}
+                <ul>
+                    {% for b in badges %}
+                    <li>{{ b.name }} — <small>{{ b.date }}</small></li>
+                    {% endfor %}
+                </ul>
+                {% else %}<p>No hay logros.</p>{% endif %}
+            {% elif active == 'progreso' %}
+                <h2>Tu Progreso</h2>
+                <p>Insignias totales: <strong>{{ badges|length }}</strong></p>
+                <p>Porcentaje participación: <strong>{{ porcentaje }}%</strong></p>
+                <div class="progress" style="background:#eee; height:20px; border-radius:8px; overflow:hidden; max-width:400px;">
+                    <div class="progress-bar" style="background:#0d6efd; height:100%; width: {{ porcentaje }}%;"></div>
                 </div>
-                <div class="card">
-                    <h3>Próximo Evento</h3>
-                    <p>Leadership Summit - 22/11/2025</p>
-                </div>
-            </div>
-            </main>
+            {% elif active == 'eventos' %}
+                <h2>Eventos</h2>
+                {% if events %}
+                <ul>
+                    {% for e in events %}
+                    <li>{{ e.title }} — <small>{{ e.date }}</small></li>
+                    {% endfor %}
+                </ul>
+                {% else %}<p>No hay eventos próximos.</p>{% endif %}
+            {% elif active == 'cumpleanos' %}
+                <h2>Usuarios</h2>
+                {% if users %}
+                <ul>
+                    {% for u in users %}
+                    <li>{{ u.fullname }} — <small>{{ u.email }}</small></li>
+                    {% endfor %}
+                </ul>
+                {% else %}<p>No hay usuarios.</p>{% endif %}
+            {% else %}
+                <h2>Bienvenido a tu Panel de Liderazgo</h2>
+                <p>Selecciona una opción del menú lateral.</p>
+            {% endif %}
+        </main>
     </div>
 
     <script src="../static/js/dashboard_user.js"></script>

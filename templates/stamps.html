@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sellos | AIESEC Gen Phoenix</title>
+    <link rel="stylesheet" href="../static/css/dashboard_user.css">
+    <link rel="stylesheet" href="../static/css/stamps.css"> <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="main-header">
+        <div class="header-content">
+            <button class="menu-toggle" aria-label="Abrir Menú">
+                <i class="fas fa-bars"></i>
+            </button>
+            <h1 class="header-title">
+                <a href="{{ url_for('dashboard') }}" style="color:inherit; text-decoration:none">Gen Phoenix Dashboard</a>
+            </h1>
+            <div class="user-area">
+                <a href="{{ url_for('usuario') }}" title="Mi perfil" style="color:inherit; text-decoration:none"><i class="fas fa-user-circle"></i></a>
+            </div>
+        </div>
+    </header>
+
+    <div class="dashboard-container">
+        <nav class="sidebar" id="sidebarMenu">
+            <ul class="nav-list">
+                <li class="nav-item {% if active == 'perfil' %}active{% endif %}">
+                    <a href="{{ url_for('usuario') }}"><i class="far fa-circle nav-icon"></i> Perfil</a>
+                </li>
+                <li class="nav-item {% if active == 'sellos' %}active{% endif %}">
+                    <a href="#" data-api="{{ url_for('api_sellos') }}"><i class="far fa-circle nav-icon"></i> Sellos</a>
+                </li>
+                <li class="nav-item {% if active == 'logros' %}active{% endif %}">
+                    <a href="#" data-api="{{ url_for('api_logros') }}"><i class="far fa-circle nav-icon"></i> Logros y recompensas</a>
+                </li>
+                <li class="nav-item {% if active == 'progreso' %}active{% endif %}">
+                    <a href="#" data-api="{{ url_for('api_progreso') }}"><i class="far fa-circle nav-icon"></i> Tu progreso</a>
+                </li>
+                <li class="nav-item {% if active == 'eventos' %}active{% endif %}">
+                    <a href="#" data-api="{{ url_for('api_eventos') }}"><i class="far fa-circle nav-icon"></i> Eventos</a>
+                </li>
+                <li class="nav-item {% if active == 'cumpleanos' %}active{% endif %}">
+                    <a href="#" data-api="{{ url_for('api_cumpleanos') }}"><i class="far fa-circle nav-icon"></i> Cumpleaños</a>
+                </li>
+            </ul>
+        </nav>
+
+        <main class="main-content">
+            <div class="stamps-page-content">
+                <header class="month-header">
+                    <i class="far fa-calendar-alt calendar-icon"></i>
+                    <span class="month-name">Noviembre 2025</span>
+                    <i class="fas fa-pencil-alt edit-icon"></i>
+                </header>
+
+                <div class="stamps-grid">
+                    
+                    <div class="stamp-card stamp-completed">
+                        <div class="stamp-icon-wrapper stamp-weekly">
+                            <i class="fas fa-users stamp-main-icon"></i>
+                            <span class="stamp-label-small">WEEKLY</span>
+                            <span class="stamp-tag tag-red">Oct</span>
+                        </div>
+                        <div class="stamp-details">
+                            <p class="stamp-title">Meeting Semanal #1</p>
+                            <div class="stamp-status status-green">
+                                <i class="fas fa-check"></i> Oct
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="stamp-card stamp-completed">
+                        <div class="stamp-icon-wrapper stamp-local">
+                            <i class="fas fa-puzzle-piece stamp-main-icon"></i>
+                            <span class="stamp-label-small">LOCAL</span>
+                            <span class="stamp-tag tag-red">Oct</span>
+                        </div>
+                        <div class="stamp-details">
+                            <p class="stamp-title">LC Meeting</p>
+                            <div class="stamp-status status-green">
+                                <i class="fas fa-check"></i> Oct
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="stamp-card stamp-pending" data-stamp-type="workshop">
+                        <div class="stamp-icon-wrapper stamp-placeholder">
+                            <div class="dotted-circle-large">
+                                <div class="dotted-circle-medium">
+                                    <i class="fas fa-plus stamp-plus-icon"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="stamp-details">
+                            <p class="stamp-title">Workshop Extra</p>
+                        </div>
+                    </div>
+
+                    <div class="stamp-card stamp-pending" data-stamp-type="mentoring">
+                        <div class="stamp-icon-wrapper stamp-placeholder">
+                            <div class="dotted-circle-large">
+                                <div class="dotted-circle-medium">
+                                    <i class="fas fa-plus stamp-plus-icon"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="stamp-details">
+                            <p class="stamp-title">Mentoring Session</p>
+                        </div>
+                    </div>
+
+                    <div class="stamp-card stamp-pending" data-stamp-type="project">
+                        <div class="stamp-icon-wrapper stamp-placeholder">
+                            <div class="dotted-circle-large">
+                                <div class="dotted-circle-medium">
+                                    <i class="fas fa-plus stamp-plus-icon"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="stamp-details">
+                            <p class="stamp-title">Project Collaboration</p>
+                        </div>
+                    </div>
+
+                    <div class="stamp-card stamp-pending" data-stamp-type="call">
+                        <div class="stamp-icon-wrapper stamp-placeholder">
+                            <div class="dotted-circle-large">
+                                <div class="dotted-circle-medium">
+                                    <i class="fas fa-plus stamp-plus-icon"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="stamp-details">
+                            <p class="stamp-title">International Call</p>
+                        </div>
+                    </div>
+                    
+                </div>
+                
+                <footer class="stamps-footer">
+                    <span class="page-indicator">Página 1/2</span>
+                    <div class="timeline-navigation"></div>
+                    <span class="navigation-text">Principal • NOV</span>
+                </footer>
+            </div>
+            </main>
+    </div>
+
+    <script src="../static/js/dashboard_user.js"></script>
+    <script src="../static/js/stamps.js"></script> </body>
+</html>
