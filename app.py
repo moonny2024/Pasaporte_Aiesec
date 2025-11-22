@@ -70,7 +70,7 @@ def dashboard():
 
     porcentaje = participation  # o el valor que quieras
     return render_template(
-        "dashboard_user.html",
+        "home.html",
         user=user,
         badges=badges,
         participation=participation,

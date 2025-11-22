@@ -25,6 +25,8 @@ CREATE TABLE badges (
 
 conn.execute("INSERT INTO users (email, password, fullname, role)" \
 "VALUES ('admin@mxp.com','admin','Administrador','admin')")
+conn.execute("INSERT INTO users (email, password, fullname, role)" \
+"VALUES ('user@mxp.com','user','Usuario','user')")
 conn.commit()
 conn.close()
 
