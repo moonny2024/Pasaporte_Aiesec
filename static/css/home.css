@@ -4,7 +4,7 @@
 :root {
     /* Variables de Color */
     --color-primary: #8B0000; /* Rojo Oscuro (Fondo) */
-    --color-secondary: #FFD700; /* Dorado (Acento) */
+    --color-secondary: #023048; /* Dorado (Acento) */
     --color-text-light: #F5F5F5; /* Blanco/Crema para el texto */
     --color-shadow: rgba(0, 0, 0, 0.5);
 }
@@ -95,7 +95,7 @@ body {
     width: 80%;
     padding: 10px 20px;
     background-color: var(--color-secondary);
-    color: var(--color-primary);
+    color: white;
     border: none;
     border-radius: 5px;
     font-size: 1em;
@@ -108,7 +108,7 @@ body {
 }
 
 .continue-button:hover {
-    background-color: #DAA520;
+    background-color: #7388cc;
 }
 
 .continue-button:active {
@@ -166,7 +166,7 @@ body {
     }
 
     .logo {
-        width: 150px; /* Logo más grande para PC */
+        width: 500px; /* Logo más grande para PC */
     }
 
     .subtitle-text {

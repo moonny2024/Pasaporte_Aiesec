@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard | AIESEC Gen Phoenix</title>
-    <link rel="stylesheet" href="../static/css/dashboard_user.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/dashboard_user.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
 </head>
@@ -107,6 +108,30 @@
         </main>
     </div>
 
-    <script src="../static/js/dashboard_user.js"></script>
+    <!-- Barra de navegación móvil inferior -->
+    <nav class="mobile-bottom-nav">
+        <a class="mobile-nav-item {% if active=='perfil' %}active{% endif %}" href="{{ url_for('perfil') }}" aria-label="Perfil">
+            <i class="fas fa-user"></i>
+            <span>Perfil</span>
+        </a>
+        <a class="mobile-nav-item {% if active=='sellos' %}active{% endif %}" href="{{ url_for('sellos') }}" aria-label="Sellos">
+            <i class="fas fa-stamp"></i>
+            <span>Sellos</span>
+        </a>
+        <a class="mobile-nav-item {% if active=='logros' %}active{% endif %}" href="{{ url_for('logros') }}" aria-label="Logros">
+            <i class="fas fa-trophy"></i>
+            <span>Logros</span>
+        </a>
+        <a class="mobile-nav-item {% if active=='progreso' %}active{% endif %}" href="{{ url_for('progreso') }}" aria-label="Progreso">
+            <i class="fas fa-chart-line"></i>
+            <span>Progreso</span>
+        </a>
+        <a class="mobile-nav-item {% if active=='eventos' %}active{% endif %}" href="{{ url_for('eventos') }}" aria-label="Eventos">
+            <i class="fas fa-calendar-alt"></i>
+            <span>Eventos</span>
+        </a>
+    </nav>
+    <script src="{{ url_for('static', filename='js/dashboard_user.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
 </body>
 </html>

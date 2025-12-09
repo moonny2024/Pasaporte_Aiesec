@@ -1,10 +1,10 @@
 /* Variables de color para consistencia */
 :root {
-    --color-dark-bg: #222;      /* Fondo Principal Oscuro */
-    --color-sidebar-bg: #1e1e1e; /* Fondo del Sidebar */
+    --color-dark-bg: #faeed2;      /* Fondo Principal Oscuro */
+    --color-sidebar-bg: #669cbc; /* Fondo del Sidebar */
     --color-primary-text: #F0F0F0; /* Color principal del texto */
-    --color-accent: #FFD700;    /* Dorado de AIESEC para acentos */
-    --color-header-bg: #8B0000; /* Rojo oscuro para el Header */
+    --color-accent: #272205;    /* Dorado de AIESEC para acentos */
+    --color-header-bg: #770002; /* Rojo oscuro para el Header */
     --color-hover: #444;        /* Color al pasar el ratón */
 }
 

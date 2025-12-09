@@ -1,0 +1,78 @@
+/* Barra inferior móvil */
+.mobile-bottom-nav {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 64px;
+  background: #ffffff;
+  border-top: 1px solid #e5e7eb;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  z-index: 1000;
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+.mobile-bottom-nav .mobile-nav-item {
+  color: #374151;
+  text-decoration: none;
+  font-size: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 20%;
+  position: relative;
+}
+
+.mobile-bottom-nav .mobile-nav-item i {
+  font-size: 18px;
+  margin-bottom: 4px;
+}
+
+/* Estado activo (ligero bump) */
+.mobile-bottom-nav .mobile-nav-item.active i {
+  transform: translateY(-2px) scale(1.05);
+  transition: transform 200ms ease;
+}
+.mobile-bottom-nav .mobile-nav-item.active::before {
+  content: "";
+  position: absolute;
+  top: 6px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: rgba(59, 130, 246, 0.15);
+  z-index: 0;
+}
+
+/* Animación de burbuja usando CSS vars para el origen */
+.mobile-bottom-nav .mobile-nav-item::after {
+  content: "";
+  position: absolute;
+  left: var(--ripple-x, 50%);
+  top: var(--ripple-y, 50%);
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(59, 130, 246, 0.35);
+  transform: translate(-50%, -50%) scale(0);
+  opacity: 0;
+  pointer-events: none;
+}
+.mobile-bottom-nav .mobile-nav-item.bubble::after {
+  animation: nav-bubble 650ms ease-out;
+}
+@keyframes nav-bubble {
+  0% { opacity: 1; transform: translate(-50%, -50%) scale(0.2); }
+  60% { opacity: 0.8; transform: translate(-50%, -50%) scale(1.6); }
+  100% { opacity: 0; transform: translate(-50%, -50%) scale(2.4); }
+}
+
+/* Ocultar sidebar en móviles si existe */
+@media (max-width: 768px) {
+  .sidebar { display: none; }
+}
