@@ -1,78 +1,142 @@
-/* Barra inferior móvil */
-.mobile-bottom-nav {
-  position: fixed;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  height: 64px;
-  background: #ffffff;
-  border-top: 1px solid #e5e7eb;
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-  z-index: 1000;
-  padding-bottom: env(safe-area-inset-bottom);
+:root {
+    --bg-color: #2A1B3D;
+    --nav-color: #FFFFFF;
+    --main-pink: #D3356D;
+    --text-color: #222222;
+    --item-width: 70px;
+    --fab-size: 60px;
 }
 
-.mobile-bottom-nav .mobile-nav-item {
-  color: #374151;
-  text-decoration: none;
-  font-size: 12px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  width: 20%;
-  position: relative;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
 }
 
-.mobile-bottom-nav .mobile-nav-item i {
-  font-size: 18px;
-  margin-bottom: 4px;
+
+
+/* --- REGLA PRINCIPAL: OCULTAR EN ESCRITORIO --- */
+.navigation {
+    display: none; /* Invisible por defecto en pantallas grandes */
 }
 
-/* Estado activo (ligero bump) */
-.mobile-bottom-nav .mobile-nav-item.active i {
-  transform: translateY(-2px) scale(1.05);
-  transition: transform 200ms ease;
-}
-.mobile-bottom-nav .mobile-nav-item.active::before {
-  content: "";
-  position: absolute;
-  top: 6px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
-  background: rgba(59, 130, 246, 0.15);
-  z-index: 0;
-}
 
-/* Animación de burbuja usando CSS vars para el origen */
-.mobile-bottom-nav .mobile-nav-item::after {
-  content: "";
-  position: absolute;
-  left: var(--ripple-x, 50%);
-  top: var(--ripple-y, 50%);
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: rgba(59, 130, 246, 0.35);
-  transform: translate(-50%, -50%) scale(0);
-  opacity: 0;
-  pointer-events: none;
-}
-.mobile-bottom-nav .mobile-nav-item.bubble::after {
-  animation: nav-bubble 650ms ease-out;
-}
-@keyframes nav-bubble {
-  0% { opacity: 1; transform: translate(-50%, -50%) scale(0.2); }
-  60% { opacity: 0.8; transform: translate(-50%, -50%) scale(1.6); }
-  100% { opacity: 0; transform: translate(-50%, -50%) scale(2.4); }
-}
+/* --- MEDIA QUERY: MOSTRAR SOLO EN MÓVIL Y TABLET --- */
+/* (Se activa en pantallas de 1024px de ancho o menos) */
+@media screen and (max-width: 1024px) {
 
-/* Ocultar sidebar en móviles si existe */
-@media (max-width: 768px) {
-  .sidebar { display: none; }
+    .navigation {
+        display: flex; /* ¡Aquí la hacemos visible! */
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        /* Opcional: limitar el ancho en tablets muy grandes para que no se estire demasiado */
+        /* max-width: 500px; */ 
+        height: 70px; /* más alto para que el bump no se corte */
+        background: var(--nav-color);
+        justify-content: center;
+        align-items: flex-end; /* bajar el contenido para dejar espacio arriba */
+        border-radius: 20px 20px 0 0;
+        box-shadow: 0 -5px 15px rgba(0,0,0,0.1);
+        z-index: 1000;
+        padding-bottom: env(safe-area-inset-bottom);
+        box-sizing: border-box;
+        overflow: visible; /* permitir que el bump sobresalga */
+        padding-top: 14px; /* espacio superior para el bump */
+    }
+
+    /* Evitar que el contenido se corte detrás de la barra en móvil */
+    body {
+        padding-bottom: 110px; /* compensar nueva altura */
+    }
+
+    .navigation ul {
+        display: flex;
+        width: 100%;
+        padding: 0 10px;
+        justify-content: space-evenly; /* Distribuye espacio equitativamente */
+        align-items: flex-end; /* alinear ítems al fondo de la barra */
+    }
+
+    .navigation ul li {
+        position: relative;
+        list-style: none;
+        width: var(--item-width);
+        height: 70px;
+        z-index: 1;
+    }
+
+    .navigation ul li a {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        width: 100%;
+        height: 100%;
+        text-align: center;
+        font-weight: 500;
+    }
+
+    /* --- CENTRADO PERFECTO DEL ICONO --- */
+    .navigation ul li a .icon {
+        position: relative;
+        display: flex;           /* Flexbox para centrar el SVG */
+        justify-content: center; /* Horizontal */
+        align-items: center;     /* Vertical */
+        width: var(--fab-size);
+        height: var(--fab-size);
+        border-radius: 50%;
+        color: var(--text-color);
+        font-size: 1.5em;
+        transition: 0.5s;
+        z-index: 2;
+    }
+
+    .navigation ul li.active a .icon {
+        transform: translateY(-32px);
+        color: #fff;
+    }
+
+    /* --- CÍRCULO ROSA (FONDO) --- */
+    .navigation ul li a .icon::before {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%) scale(0); /* Centrado absoluto */
+        
+        width: 100%;
+        height: 100%;
+        background: var(--main-pink);
+        border-radius: 50%;
+        z-index: -1;
+        
+        border: 6px solid var(--nav-color);
+        box-shadow: 0 5px 15px rgba(211, 53, 109, 0.4);
+        transition: 0.5s;
+    }
+
+    .navigation ul li.active a .icon::before {
+        transform: translate(-50%, -50%) scale(1);
+    }
+
+    /* --- TEXTO --- */
+    .navigation ul li a .text {
+        position: absolute;
+        color: var(--text-color);
+        font-weight: 400;
+        font-size: 0.75em;
+        letter-spacing: 0.05em;
+        transition: 0.5s;
+        opacity: 1;
+        transform: translateY(18px);
+    }
+
+    .navigation ul li.active a .text {
+        opacity: 0;
+        transform: translateY(10px);
+    }
 }

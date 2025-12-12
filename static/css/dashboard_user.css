@@ -1,12 +1,5 @@
 /* Variables de color para consistencia */
-:root {
-    --color-dark-bg: #faeed2;      /* Fondo Principal Oscuro */
-    --color-sidebar-bg: #669cbc; /* Fondo del Sidebar */
-    --color-primary-text: #F0F0F0; /* Color principal del texto */
-    --color-accent: #272205;    /* Dorado de AIESEC para acentos */
-    --color-header-bg: #770002; /* Rojo oscuro para el Header */
-    --color-hover: #444;        /* Color al pasar el ratón */
-}
+
 
 /* Base y Reset */
 * {
@@ -20,114 +13,16 @@ body {
     background-color: var(--color-dark-bg);
     color: var(--color-primary-text);
     line-height: 1.6;
+        min-height: 100vh;
+
 }
-
-/* ---------------------------------------------------------------------- */
-/* 1. HEADER (CABECERA) */
-/* ---------------------------------------------------------------------- */
-.main-header {
-    background-color: var(--color-header-bg);
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    z-index: 1000;
-}
-
-.header-content {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 20px;
-    height: 60px;
-}
-
-.header-title {
-    font-size: 1.5em;
-    font-weight: 700;
-    color: var(--color-primary-text);
-}
-
-.user-area {
-    font-size: 1.5em;
-    color: var(--color-accent);
-}
-
-.menu-toggle {
-    /* Botón visible solo en móvil, oculto por defecto */
-    display: none; 
-    background: none;
-    border: none;
-    color: var(--color-primary-text);
-    font-size: 1.5em;
-    cursor: pointer;
-}
-
-/* ---------------------------------------------------------------------- */
-/* 2. LAYOUT DEL DASHBOARD (CONTENEDOR) */
-/* ---------------------------------------------------------------------- */
-.dashboard-container {
-    display: flex;
-    /* Espacio para el header fijo */
-    padding-top: 60px; 
-}
-
-/* ---------------------------------------------------------------------- */
-/* 3. SIDEBAR (MENÚ DE NAVEGACIÓN) - ESTILOS DE ESCRITORIO */
-/* ---------------------------------------------------------------------- */
-.sidebar {
-    width: 250px;
-    background-color: var(--color-sidebar-bg);
-    min-height: calc(100vh - 60px); /* Ocupa el resto de la altura */
-    padding: 20px 0;
-    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.3);
-    /* Posicionamiento para que se quede a la izquierda de la pantalla */
-    position: sticky;
-    top: 60px;
-    z-index: 999;
-}
-
-.nav-list {
-    list-style: none;
-}
-
-.nav-item a {
-    display: flex;
-    align-items: center;
-    padding: 12px 20px;
-    text-decoration: none;
-    color: var(--color-primary-text);
-    font-size: 1.1em;
-    transition: background-color 0.3s, color 0.3s;
-}
-
-.nav-item a:hover {
-    background-color: var(--color-hover);
-    color: var(--color-accent);
-}
-
-.nav-icon {
-    margin-right: 10px;
-    color: var(--color-primary-text);
-}
-
-.nav-item.active a {
-    background-color: var(--color-hover);
-    font-weight: 700;
-}
-
-.nav-item.active .nav-icon {
-    color: var(--color-accent); /* Resaltar el icono del elemento activo */
-}
-
-
 /* ---------------------------------------------------------------------- */
 /* 4. MAIN CONTENT (CONTENIDO PRINCIPAL) */
 /* ---------------------------------------------------------------------- */
 .main-content {
     flex-grow: 1; /* Ocupa el espacio restante */
     padding: 30px;
+   
 }
 
 .main-content h2 {

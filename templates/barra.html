@@ -1,31 +1,65 @@
-<!-- Recursos CSS necesarios para la barra móvil (sin Jinja) -->
-<link rel="stylesheet" href="../static/css/style.css">
-<link rel="stylesheet" href="../static/css/barra.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menú Navegación App</title>
+    <link rel="stylesheet" href="../static/css/barra.css">
+</head>
+<body>
 
-<!-- Barra de navegación móvil inferior (parcial) -->
-<nav class="mobile-bottom-nav">
-	<a class="mobile-nav-item active" href="#" aria-label="Perfil">
-		<i class="fas fa-user"></i>
-		<span>Perfil</span>
-	</a>
-	<a class="mobile-nav-item" href="#" aria-label="Sellos">
-		<i class="fas fa-stamp"></i>
-		<span>Sellos</span>
-	</a>
-	<a class="mobile-nav-item" href="#" aria-label="Logros">
-		<i class="fas fa-trophy"></i>
-		<span>Logros</span>
-	</a>
-	<a class="mobile-nav-item" href="#" aria-label="Progreso">
-		<i class="fas fa-chart-line"></i>
-		<span>Progreso</span>
-	</a>
-	<a class="mobile-nav-item" href="#" aria-label="Eventos">
-		<i class="fas fa-calendar-alt"></i>
-		<span>Eventos</span>
-	</a>
-</nav>
+    <div class="navigation">
+        <ul>
+            <li class="list-item">
+                <a href="#">
+                    <span class="icon">
+                        <ion-icon name="ribbon-outline"></ion-icon>
+                    </span>
+                    <span class="text">Sellos</span>
+                </a>
+            </li>
 
-<!-- JS para animaciones de burbuja y navegación -->
-<script src="../static/js/script.js"></script>
+            <li class="list-item">
+                <a href="#">
+                    <span class="icon">
+                        <ion-icon name="trophy-outline"></ion-icon>
+                    </span>
+                    <span class="text">Logros</span>
+                </a>
+            </li>
+
+            <li class="list-item active">
+                <a href="#">
+                    <span class="icon">
+                        <ion-icon name="location"></ion-icon>
+                    </span>
+                    <span class="text">Progreso</span>
+                </a>
+            </li>
+
+            <li class="list-item">
+                <a href="#">
+                    <span class="icon">
+                        <ion-icon name="calendar-outline"></ion-icon>
+                    </span>
+                    <span class="text">Eventos</span>
+                </a>
+            </li>
+
+            <li class="list-item">
+                <a href="#">
+                    <span class="icon">
+                        <ion-icon name="person-outline"></ion-icon>
+                    </span>
+                    <span class="text">Cumple</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    
+    <script src="../static/js/barra.js"></script>
+</body>
+</html>

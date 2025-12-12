@@ -5,7 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard | AIESEC Gen Phoenix</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/dashboard_user.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/header.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/barra.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
 </head>
@@ -16,10 +17,10 @@
                 <i class="fas fa-bars"></i>
             </button>
             <h1 class="header-title">
-                <a href="{{ url_for('dashboard') }}" style="color:inherit; text-decoration:none">Gen Phoenix Dashboard</a>
+                    <a href="{{ url_for('dashboard.dashboard_user') }}" style="color:inherit; text-decoration:none">Gen Phoenix Dashboard</a>
             </h1>
             <div class="user-area">
-                <a href="{{ url_for('perfil') }}" title="Mi perfil" style="color:inherit; text-decoration:none"><i class="fas fa-user-circle"></i></a>
+                <a href="{{ url_for('dashboard.perfil') }}" title="Mi perfil" style="color:inherit; text-decoration:none"><i class="fas fa-user-circle"></i></a>
             </div>
         </div>
     </header>
@@ -28,22 +29,22 @@
         <nav class="sidebar" id="sidebarMenu">
             <ul class="nav-list">
                 <li class="nav-item">
-                    <a href="{{ url_for('perfil') }}"><i class="far fa-circle nav-icon"></i> Perfil</a>
+                    <a href="{{ url_for('dashboard.perfil') }}"><i class="far fa-circle nav-icon"></i> Perfil</a>
                 </li>
                 <li class="nav-item">
-                    <a href="{{ url_for('sellos') }}"><i class="far fa-circle nav-icon"></i> Sellos</a>
+                    <a href="{{ url_for('dashboard.sellos') }}"><i class="far fa-circle nav-icon"></i> Sellos</a>
                 </li>
                 <li class="nav-item">
-                    <a href="{{ url_for('logros') }}"><i class="far fa-circle nav-icon"></i> Logros y recompensas</a>
+                    <a href="{{ url_for('dashboard.logros') }}"><i class="far fa-circle nav-icon"></i> Logros y recompensas</a>
                 </li>
                 <li class="nav-item">
-                    <a href="{{ url_for('progreso') }}"><i class="far fa-circle nav-icon"></i> Tu progreso</a>
+                    <a href="{{ url_for('dashboard.progreso') }}"><i class="far fa-circle nav-icon"></i> Tu progreso</a>
                 </li>
                 <li class="nav-item">
-                    <a href="{{ url_for('eventos') }}"><i class="far fa-circle nav-icon"></i> Eventos</a>
+                    <a href="{{ url_for('dashboard.eventos') }}"><i class="far fa-circle nav-icon"></i> Eventos</a>
                 </li>
                 <li class="nav-item">
-                    <a href="{{ url_for('cumpleanos') }}"><i class="far fa-circle nav-icon"></i> Cumpleaños</a>
+                    <a href="{{ url_for('dashboard.cumpleanos') }}"><i class="far fa-circle nav-icon"></i> Cumpleaños</a>
                 </li>
             </ul>
         </nav>
@@ -81,7 +82,7 @@
                 <p>Insignias totales: <strong>{{ badges|length }}</strong></p>
                 <p>Porcentaje participación: <strong>{{ porcentaje }}%</strong></p>
                 <div class="progress" style="background:#eee; height:20px; border-radius:8px; overflow:hidden; max-width:400px;">
-                    <div class="progress-bar" style="background:#0d6efd; height:100%; width: {{ porcentaje }}%;"></div>
+                    <div class="progress-bar" style="background:#0d6efd; height:100%; width: {{ porcentaje }}%;"> </div>
                 </div>
             {% elif active == 'eventos' %}
                 <h2>Eventos</h2>
@@ -106,32 +107,61 @@
                 <p>Selecciona una opción del menú lateral.</p>
             {% endif %}
         </main>
-    </div>
 
-    <!-- Barra de navegación móvil inferior -->
-    <nav class="mobile-bottom-nav">
-        <a class="mobile-nav-item {% if active=='perfil' %}active{% endif %}" href="{{ url_for('perfil') }}" aria-label="Perfil">
-            <i class="fas fa-user"></i>
-            <span>Perfil</span>
-        </a>
-        <a class="mobile-nav-item {% if active=='sellos' %}active{% endif %}" href="{{ url_for('sellos') }}" aria-label="Sellos">
-            <i class="fas fa-stamp"></i>
-            <span>Sellos</span>
-        </a>
-        <a class="mobile-nav-item {% if active=='logros' %}active{% endif %}" href="{{ url_for('logros') }}" aria-label="Logros">
-            <i class="fas fa-trophy"></i>
-            <span>Logros</span>
-        </a>
-        <a class="mobile-nav-item {% if active=='progreso' %}active{% endif %}" href="{{ url_for('progreso') }}" aria-label="Progreso">
-            <i class="fas fa-chart-line"></i>
-            <span>Progreso</span>
-        </a>
-        <a class="mobile-nav-item {% if active=='eventos' %}active{% endif %}" href="{{ url_for('eventos') }}" aria-label="Eventos">
-            <i class="fas fa-calendar-alt"></i>
-            <span>Eventos</span>
-        </a>
-    </nav>
+          <div class="navigation">
+        <ul>
+            <li class="list-item">
+                <a href="#">
+                    <span class="icon">
+                        <ion-icon name="ribbon-outline"></ion-icon>
+                    </span>
+                    <span class="text">Sellos</span>
+                </a>
+            </li>
+
+            <li class="list-item">
+                <a href="#">
+                    <span class="icon">
+                        <ion-icon name="trophy-outline"></ion-icon>
+                    </span>
+                    <span class="text">Logros</span>
+                </a>
+            </li>
+
+            <li class="list-item active">
+                <a href="#">
+                    <span class="icon">
+                            <a href="{{ url_for('dashboard.perfil') }}" aria-label="Perfil">
+                    </span>
+                    <span class="text">Progreso</span>
+                </a>
+            </li>
+
+            <li class="list-item">
+                <a href="#">
+                            <a href="{{ url_for('dashboard.sellos') }}" aria-label="Sellos">
+                        <ion-icon name="calendar-outline"></ion-icon>
+                    </span>
+                    <span class="text">Eventos</span>
+                </a>
+            </li>
+
+            <li class="list-item">
+                            <a href="{{ url_for('dashboard.logros') }}" aria-label="Logros">
+                    <span class="icon">
+                        <ion-icon name="person-outline"></ion-icon>
+                    </span>
+                    <span class="text">Cumple</span>
+                </a>
+            </li>
+        </ul>
+                            <a href="{{ url_for('dashboard.progreso') }}" aria-label="Progreso">
+    </div>
+   
+   
     <script src="{{ url_for('static', filename='js/dashboard_user.js') }}"></script>
-    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
-</body>
+    <script src="{{ url_for('static', filename='js/barra.js') }}"></script>
+     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+                            <a href="{{ url_for('dashboard.eventos') }}" aria-label="Eventos">
 </html>
