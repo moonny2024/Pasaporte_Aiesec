@@ -6,6 +6,28 @@
     --color-header-bg: #770002; /* Rojo oscuro para el Header */
     --color-hover: #444;        /* Color al pasar el ratón */
 }
+.dashboard-container {
+    display: flex;
+    padding-top: 60px; /* Espacio para el header fijo */
+    min-height: 100vh;
+    background-color: var(--color-bg-light, #F8F9FA); /* Usa variable o color por defecto */
+}
+.main-content {
+    flex: 1; /* Ocupa todo el ancho restante al lado del sidebar */
+    padding: 20px;
+    
+    /* === AQUÍ ESTÁ EL CENTRADO QUE BUSCAS === */
+    display: flex;
+    /* justify-content: center; Centra horizontalmente */
+    /*align-items: center;      Centra verticalmente si hay espacio */
+    flex-direction: column;
+    
+    /* Asegura que tenga altura mínima para centrar verticalmente */
+    min-height: calc(100vh - 60px); 
+    
+    /* Espacio extra abajo para que la barra móvil no tape el contenido */
+    padding-bottom: 90px; 
+}
 /* ---------------------------------------------------------------------- */
 /* 1. HEADER (CABECERA) */
 /* ---------------------------------------------------------------------- */
@@ -106,4 +128,12 @@
 }
 @media (max-width: 768px) {
 	.sidebar { display: none; }
+}
+
+@media (max-width: 768px) {
+    .main-content {
+        width: 100%;
+        padding: 15px;
+        padding-bottom: 100px; /* Más espacio para la barra de navegación móvil */
+    }
 }

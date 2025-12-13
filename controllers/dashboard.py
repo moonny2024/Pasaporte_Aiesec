@@ -3,67 +3,66 @@ from . import dashboard_bp
 from utils.db import get_db
 
 
-def _render_user_section(active):
+def _require_login():
     if 'id' not in session:
         return redirect(url_for('dashboard.login'))
-    conn = get_db()
-    user = conn.execute("SELECT * FROM users WHERE id=?", (session['id'],)).fetchone()
-    badges_rows = conn.execute("SELECT id, name, image, date FROM badges WHERE user_id=?", (session['id'],)).fetchall()
-    badges = [dict(id=r['id'], name=r['name'], image=r['image'], date=r['date']) for r in badges_rows]
-    users_rows = conn.execute("SELECT id, fullname, email FROM users").fetchall()
-    users = [dict(id=r['id'], fullname=r['fullname'], email=r['email']) for r in users_rows]
-    events = [
-        {'id': 1, 'title': 'Leadership Summit', 'date': '2025-11-22'},
-        {'id': 2, 'title': 'Workshop: Team Building', 'date': '2025-12-05'},
-    ]
-    total_badges = len(badges)
-    porcentaje = min(100, total_badges * 10)
-    return render_template(
-        'dashboard_user.html',
-        user=user,
-        badges=badges,
-        users=users,
-        events=events,
-        porcentaje=porcentaje,
-        active=active
-    )
+    return None
 
 
 @dashboard_bp.route('/dashboard_user')
 def dashboard_user():
-    if 'id' not in session:
-        return redirect(url_for('dashboard.login'))
-    return _render_user_section('perfil')
+    must = _require_login()
+    if must:
+        return must
+    return render_template('home.html')
 
 
 @dashboard_bp.route('/perfil')
 def perfil():
-    return _render_user_section('perfil')
+    must = _require_login()
+    if must:
+        return must
+    return render_template('profile.html')
 
 
 @dashboard_bp.route('/sellos')
 def sellos():
-    return _render_user_section('sellos')
+    must = _require_login()
+    if must:
+        return must
+    return render_template('stamps.html')
 
 
 @dashboard_bp.route('/logros')
 def logros():
-    return _render_user_section('logros')
+    must = _require_login()
+    if must:
+        return must
+    return render_template('achievements.html')
 
 
 @dashboard_bp.route('/progreso')
 def progreso():
-    return _render_user_section('progreso')
+    must = _require_login()
+    if must:
+        return must
+    return render_template('progress.html')
 
 
 @dashboard_bp.route('/eventos')
 def eventos():
-    return _render_user_section('eventos')
+    must = _require_login()
+    if must:
+        return must
+    return render_template('events.html')
 
 
 @dashboard_bp.route('/cumpleanos')
 def cumpleanos():
-    return _render_user_section('cumpleanos')
+    must = _require_login()
+    if must:
+        return must
+    return render_template('birthday.html')
 
 
 @dashboard_bp.route('/continuar', methods=['POST'])
@@ -88,7 +87,7 @@ def login():
             session['role'] = user['role']
             if user['role'] == 'admin':
                 return redirect(url_for('dashboard.admin'))
-            return redirect(url_for('dashboard.dashboard_user'))
+            return redirect(url_for('dashboard.sellos'))
         return render_template('login.html', error='Credenciales incorrectas')
     return render_template('login.html')
 
