@@ -1,0 +1,5 @@
+/* Transición suave entre páginas */
+body.fade-enter { opacity: 0; }
+body.fade-enter-active { opacity: 1; transition: opacity 300ms ease; }
+body.fade-leave { opacity: 1; }
+body.fade-leave-active { opacity: 0; transition: opacity 200ms ease; }

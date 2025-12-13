@@ -128,40 +128,4 @@
                 </a>
             </li>
 
-            <li class="list-item active">
-                <a href="#">
-                    <span class="icon">
-                            <a href="{{ url_for('dashboard.perfil') }}" aria-label="Perfil">
-                    </span>
-                    <span class="text">Progreso</span>
-                </a>
-            </li>
-
-            <li class="list-item">
-                <a href="#">
-                            <a href="{{ url_for('dashboard.sellos') }}" aria-label="Sellos">
-                        <ion-icon name="calendar-outline"></ion-icon>
-                    </span>
-                    <span class="text">Eventos</span>
-                </a>
-            </li>
-
-            <li class="list-item">
-                            <a href="{{ url_for('dashboard.logros') }}" aria-label="Logros">
-                    <span class="icon">
-                        <ion-icon name="person-outline"></ion-icon>
-                    </span>
-                    <span class="text">Cumple</span>
-                </a>
-            </li>
-        </ul>
-                            <a href="{{ url_for('dashboard.progreso') }}" aria-label="Progreso">
-    </div>
-   
-   
-    <script src="{{ url_for('static', filename='js/dashboard_user.js') }}"></script>
-    <script src="{{ url_for('static', filename='js/barra.js') }}"></script>
-     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
-    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
-                            <a href="{{ url_for('dashboard.eventos') }}" aria-label="Eventos">
-</html>
+            {% include 'barra.html' %}

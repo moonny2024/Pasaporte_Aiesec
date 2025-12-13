@@ -1,65 +1,54 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Menú Navegación App</title>
-    <link rel="stylesheet" href="../static/css/barra.css">
-</head>
-<body>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/barra.css') }}">
 
-    <div class="navigation">
-        <ul>
-            <li class="list-item">
-                <a href="#">
-                    <span class="icon">
-                        <ion-icon name="ribbon-outline"></ion-icon>
-                    </span>
-                    <span class="text">Sellos</span>
-                </a>
-            </li>
+<div class="navigation">
+    <ul>
+        <li class="list-item {% if active=='sellos' %}active{% endif %}">
+            <a href="{{ url_for('dashboard.sellos') }}">
+                <span class="icon">
+                    <ion-icon name="ribbon-outline"></ion-icon>
+                </span>
+                <span class="text">Sellos</span>
+            </a>
+        </li>
 
-            <li class="list-item">
-                <a href="#">
-                    <span class="icon">
-                        <ion-icon name="trophy-outline"></ion-icon>
-                    </span>
-                    <span class="text">Logros</span>
-                </a>
-            </li>
+        <li class="list-item {% if active=='logros' %}active{% endif %}">
+            <a href="{{ url_for('dashboard.logros') }}">
+                <span class="icon">
+                    <ion-icon name="trophy-outline"></ion-icon>
+                </span>
+                <span class="text">Logros</span>
+            </a>
+        </li>
 
-            <li class="list-item active">
-                <a href="#">
-                    <span class="icon">
-                        <ion-icon name="location"></ion-icon>
-                    </span>
-                    <span class="text">Progreso</span>
-                </a>
-            </li>
+        <li class="list-item {% if active=='progreso' %}active{% endif %}">
+            <a href="{{ url_for('dashboard.progreso') }}">
+                <span class="icon">
+                    <ion-icon name="location"></ion-icon>
+                </span>
+                <span class="text">Progreso</span>
+            </a>
+        </li>
 
-            <li class="list-item">
-                <a href="#">
-                    <span class="icon">
-                        <ion-icon name="calendar-outline"></ion-icon>
-                    </span>
-                    <span class="text">Eventos</span>
-                </a>
-            </li>
+        <li class="list-item {% if active=='eventos' %}active{% endif %}">
+            <a href="{{ url_for('dashboard.eventos') }}">
+                <span class="icon">
+                    <ion-icon name="calendar-outline"></ion-icon>
+                </span>
+                <span class="text">Eventos</span>
+            </a>
+        </li>
 
-            <li class="list-item">
-                <a href="#">
-                    <span class="icon">
-                        <ion-icon name="person-outline"></ion-icon>
-                    </span>
-                    <span class="text">Cumple</span>
-                </a>
-            </li>
-        </ul>
-    </div>
+        <li class="list-item {% if active=='cumpleanos' %}active{% endif %}">
+            <a href="{{ url_for('dashboard.cumpleanos') }}">
+                <span class="icon">
+                    <ion-icon name="person-outline"></ion-icon>
+                </span>
+                <span class="text">Cumple</span>
+            </a>
+        </li>
+    </ul>
+</div>
 
-    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
-    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
-    
-    <script src="../static/js/barra.js"></script>
-</body>
-</html>
+<script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+<script src="{{ url_for('static', filename='js/barra.js') }}"></script>

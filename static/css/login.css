@@ -1,0 +1,169 @@
+/* login.css */
+
+/* Reset básico */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #4a0000;
+    min-height: 100vh; /* Cambiado de height a min-height para permitir scroll */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    /* Quitamos overflow: hidden del body para permitir scroll en móviles si hace falta */
+    overflow-x: hidden; /* Solo ocultamos el desbordamiento horizontal */
+}
+
+/* === FONDO ANIMADO (Ahora es Fixed) === */
+.background-animate {
+    position: fixed; /* Fixed para que cubra la pantalla aunque hagas scroll */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    filter: blur(120px);
+    -webkit-filter: blur(120px);
+    opacity: 0.8;
+    overflow: hidden; /* Contiene los círculos dentro */
+}
+
+/* Círculos de luz (sin cambios) */
+.circle {
+    position: absolute;
+    border-radius: 50%;
+    animation: moveAndPulse 20s infinite alternate ease-in-out;
+}
+.circle-1 { background: #c62828; width: 600px; height: 600px; top: -20%; left: -15%; }
+.circle-2 { background: #e64a19; width: 500px; height: 500px; bottom: -10%; right: -10%; animation-delay: -5s; animation-duration: 25s; }
+.circle-3 { background: #8b0000; width: 400px; height: 400px; top: 40%; left: 30%; animation-delay: -10s; animation-duration: 18s; opacity: 0.7; }
+
+@keyframes moveAndPulse {
+    0% { transform: translate(0, 0) scale(1); }
+    50% { transform: translate(50px, 80px) scale(1.1); }
+    100% { transform: translate(-30px, 120px) scale(0.95); }
+}
+
+/* === CONTENEDOR PRINCIPAL === */
+.login-wrapper {
+    display: flex;
+    width: 850px;
+    max-width: 90%;
+    min-height: 500px;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.5);
+    /* Margen de seguridad para móviles */
+    margin: 20px; 
+}
+
+/* --- LADO IZQUIERDO (VIDRIO) --- */
+.glass-side {
+    flex: 1;
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    padding: 50px; /* Padding original para PC */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-right: 1px solid rgba(255,255,255,0.1);
+}
+
+.login-title {
+    font-weight: bold;
+    font-size: 28px;
+    color: white;
+    margin-bottom: 30px;
+    text-align: center;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.alert-custom {
+    background: rgba(255, 0, 0, 0.4);
+    color: white;
+    padding: 10px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    font-size: 14px;
+    text-align: center;
+    border: 1px solid rgba(255,255,255,0.3);
+}
+
+.input-group { margin-bottom: 20px; }
+.input-group label { display: block; color: rgba(255,255,255,0.9); font-size: 12px; margin-bottom: 8px; margin-left: 10px; font-weight: bold; }
+.input-group input { width: 100%; padding: 12px 20px; border-radius: 25px; border: 1px solid rgba(255,255,255,0.5); background: rgba(255,255,255,0.1); color: white; outline: none; transition: 0.3s; }
+.input-group input::placeholder { color: rgba(255,255,255,0.6); }
+.input-group input:focus { background: rgba(255,255,255,0.25); border-color: white; }
+
+.btn-login { width: 100%; padding: 12px; margin-top: 10px; border-radius: 25px; border: none; background: white; color: #8b0000; font-weight: bold; font-size: 16px; cursor: pointer; box-shadow: 0 4px 6px rgba(0,0,0,0.2); transition: transform 0.2s; }
+.btn-login:hover { transform: scale(1.02); }
+
+.footer-text { text-align: center; color: rgba(255,255,255,0.8); font-size: 14px; margin-top: 25px; }
+.footer-text a { color: white; text-decoration: underline; }
+
+/* --- LADO DERECHO (BLANCO) --- */
+.white-side {
+    flex: 0.8;
+    background: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 40px;
+    position: relative;
+}
+
+.brand-logo {
+    max-width: 90%;
+    height: 200px; /* Altura original para PC */
+    object-fit: contain; /* Asegura que la imagen no se estire */
+    margin-bottom: 20px;
+}
+
+.brand-url { color: #999; position: absolute; bottom: 20px; font-size: 14px; }
+
+/* === RESPONSIVE FIX (CELULARES) === */
+@media (max-width: 768px) {
+    .login-wrapper {
+        flex-direction: column;
+        width: 100%; /* Ocupar todo el ancho disponible */
+        max-width: 400px; /* Pero no pasarse de gigante en tablets */
+        margin: 20px; /* Margen para que no pegue a los bordes */
+    }
+
+    /* Ajustes del lado Blanco (Logo) */
+    .white-side {
+        order: -1; /* Mover arriba */
+        padding: 20px; /* Menos padding */
+        flex: 0 0 auto; /* Que ocupe solo lo necesario */
+    }
+
+    .brand-logo {
+        height: auto; /* Dejar que se ajuste sola */
+        max-height: 80px; /* Limitar altura máxima en móvil (antes era 200px!) */
+        margin-bottom: 0;
+    }
+
+    .brand-url {
+        display: none; /* Ocultar la URL en móviles para ahorrar espacio */
+    }
+
+    /* Ajustes del lado Vidrio (Formulario) */
+    .glass-side {
+        padding: 30px 20px; /* Reducir padding lateral drásticamente */
+        border-right: none;
+        border-top: 1px solid rgba(255,255,255,0.1); /* Borde arriba en vez de derecha */
+    }
+
+    .login-title {
+        font-size: 24px; /* Título un poco más pequeño */
+        margin-bottom: 20px;
+    }
+}

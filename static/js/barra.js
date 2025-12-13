@@ -39,6 +39,37 @@ function updateIcons() {
 }
 
 // Añadimos el "escuchador" de eventos 'click' a cada elemento
-list.forEach((item) =>
-    item.addEventListener('click', activeLink)
-);
+list.forEach((item) => {
+    item.addEventListener('click', (e) => {
+        // transición suave antes de navegar
+        const link = item.querySelector('a');
+        const href = link && link.getAttribute('href');
+        e.preventDefault();
+        activeLink.call(item);
+        document.body.classList.remove('fade-enter-active');
+        document.body.classList.add('fade-leave');
+        document.body.classList.add('fade-leave-active');
+        setTimeout(() => {
+            if (href && href !== '#' && href !== 'javascript:void(0)') {
+                window.location.href = href;
+            } else {
+                // si es demo, revertimos la clase tras la salida
+                document.body.classList.remove('fade-leave');
+                document.body.classList.remove('fade-leave-active');
+            }
+        }, 180);
+    });
+});
+
+// Al cargar, aplicar fade-in
+document.addEventListener('DOMContentLoaded', () => {
+    document.body.classList.add('fade-enter');
+    requestAnimationFrame(() => {
+        document.body.classList.add('fade-enter-active');
+        // limpiar clases de entrada tras completar
+        setTimeout(() => {
+            document.body.classList.remove('fade-enter');
+            // mantenemos fade-enter-active para estado normal
+        }, 320);
+    });
+});
