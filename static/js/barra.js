@@ -67,24 +67,12 @@ list.forEach((item) => {
             return;
         }
 
-        // transición suave antes de navegar
+        // Navegación directa sin transiciones
         e.preventDefault();
         isNavigating = true;
-        // Desactivar interacción durante la transición para evitar jank
         if (navEl) navEl.style.pointerEvents = 'none';
-
-        // Activar estado visual del item sin forzar reflow excesivo
-        requestAnimationFrame(() => {
-            activeLink.call(item);
-            document.body.classList.add('fade-leave');
-            requestAnimationFrame(() => {
-                document.body.classList.add('fade-leave-active');
-                setTimeout(() => {
-                    try { sessionStorage.setItem('skipEnter', '1'); } catch (e) {}
-                    window.location.href = href;
-                }, 100);
-            });
-        });
+        activeLink.call(item);
+        window.location.href = href;
     });
 });
 
