@@ -22,18 +22,7 @@
 }
 
 /* Base y Reset */
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
 
-body {
-    font-family: 'Roboto', sans-serif;
-    background-color: var(--color-bg-page);
-    color: var(--color-text-dark);
-    line-height: 1.5;
-}
 
 .progress-page-container {
     max-width: 1200px; /* Ancho máximo en PC */
@@ -60,9 +49,11 @@ body {
     margin-right: 15px;
 }
 
-.header-title {
+.header-titles {
     font-size: 1.6em;
     font-weight: 700;
+    color: var(--color-text-dark);
+    
 }
 
 /* Resumen (Stats y Barra) */
