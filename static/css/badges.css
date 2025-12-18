@@ -1,0 +1,77 @@
+body { background: #f5f6fa; }
+
+.seal-card {
+    background: white;
+    border-radius: 16px;
+    padding: 20px 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,.08);
+    text-align: center;
+}
+
+.seal-circle {
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    margin: 0 auto 10px;
+    border: 5px solid #ffc107;
+    background: #ffd966;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.seal-circle img {
+    width: 45px;
+}
+
+.seal-badge {
+    position: absolute;
+    bottom: -5px;
+    right: -5px;
+    background: #dc3545;
+    color: white;
+    font-size: 11px;
+    padding: 2px 6px;
+    border-radius: 10px;
+}
+
+.seal-title {
+    font-weight: 600;
+    margin-top: 8px;
+}
+
+.seal-date {
+    font-size: 13px;
+    color: #28a745;
+}
+
+/* Contorno punteado para el sello bloqueado */
+.locked-circle {
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    margin: 0 auto 10px;
+    border: 3px dashed #7d7d7d;  /* Líneas punteadas */
+    background: none;  /* Sin fondo */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+/* El contorno punteado es solo para el bloqueado */
+.locked {
+    opacity: 0.4;  /* Reduce la opacidad del contenedor completo */
+    filter: grayscale(100%);  /* Convierte el color a escala de grises */
+}
+
+/* Opcional: cambiar el icono para el sello bloqueado */
+.locked .seal-title {
+    color: #999;  /* Color más tenue para el texto */
+}
+
+/* Evitar que la imagen se vea en el sello bloqueado */
+.locked-circle img {
+    display: none;  /* Oculta la imagen */
+}

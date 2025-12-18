@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Mis Sellos</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+
+    <style>
+        body {
+            background: #f5f6fa;
+        }
+
+        .seal-card {
+            background: white;
+            border-radius: 16px;
+            padding: 20px 10px;
+            box-shadow: 0 4px 10px rgba(0,0,0,.08);
+            text-align: center;
+        }
+
+        .seal-circle {
+            width: 90px;
+            height: 90px;
+            border-radius: 50%;
+            margin: 0 auto 10px;
+            border: 5px solid #ffc107;
+            background: #ffd966;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            font-size: 32px;
+            color: #fff;
+        }
+
+        .seal-circle.green {
+            background: #4CAF50;
+            border-color: #43a047;
+        }
+
+        .seal-circle.red {
+            background: #e53935;
+            border-color: #d32f2f;
+        }
+
+        .seal-badge {
+            position: absolute;
+            bottom: -5px;
+            right: -5px;
+            background: #dc3545;
+            color: white;
+            font-size: 11px;
+            padding: 2px 6px;
+            border-radius: 10px;
+        }
+
+        .seal-title {
+            font-weight: 600;
+            margin-top: 8px;
+        }
+
+        .seal-status {
+            font-size: 13px;
+            color: #28a745;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container py-4">
+    <h4 class="fw-bold mb-4">Mis Sellos</h4>
+
+    <div class="row g-3">
+
+        <!-- Sello 1 -->
+        <div class="col-6">
+            <div class="seal-card">
+                <div class="seal-circle green">
+                    <i class="bi bi-people"></i>
+                    <span class="seal-badge">Oct</span>
+                </div>
+                <div class="seal-title">Meeting Semanal #1</div>
+                <div class="seal-status">
+                    <i class="bi bi-check-circle-fill"></i> Oct
+                </div>
+            </div>
+        </div>
+
+        <!-- Sello 2 -->
+        <div class="col-6">
+            <div class="seal-card">
+                <div class="seal-circle green">
+                    <i class="bi bi-puzzle"></i>
+                    <span class="seal-badge">Oct</span>
+                </div>
+                <div class="seal-title">LC Meeting</div>
+                <div class="seal-status">
+                    <i class="bi bi-check-circle-fill"></i> Oct
+                </div>
+            </div>
+        </div>
+
+        <!-- Sello 3 -->
+        <div class="col-6">
+            <div class="seal-card">
+                <div class="seal-circle red">
+                    <i class="bi bi-bullseye"></i>
+                    <span class="seal-badge">Oct</span>
+                </div>
+                <div class="seal-title">Participación Activa</div>
+                <div class="seal-status">
+                    <i class="bi bi-check-circle-fill"></i> Oct
+                </div>
+            </div>
+        </div>
+
+        <!-- Sello 4 -->
+        <div class="col-6">
+            <div class="seal-card">
+                <div class="seal-circle">
+                    <i class="bi bi-mic"></i>
+                </div>
+                <div class="seal-title">Intervención en Debate</div>
+                <div class="seal-status">
+                    <i class="bi bi-check-circle-fill"></i> Oct
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+</body>
+</html>

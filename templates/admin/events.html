@@ -1,0 +1,56 @@
+{% extends 'layouts/base_admin.html' %}
+
+{% block title %}Mis Eventos{% endblock %}
+
+{% block content %}
+<div class="container py-4">
+    <h4 class="fw-bold mb-3">Eventos del mes</h4>
+
+    {% if events|length == 0 %}
+        <p class="text-muted">No hay eventos este mes</p>
+    {% endif %}
+
+    {% for event in events %}
+    <div class="card mb-3 shadow-sm">
+        <div class="row g-0">
+
+            {% if event.image %}
+            <div class="col-4">
+                <img src="{{ event.image }}" class="img-fluid rounded-start">
+            </div>
+            {% endif %}
+
+            <div class="col">
+                <div class="card-body">
+
+                    <div class="d-flex justify-content-between align-items-start">
+                        <h5 class="card-title">{{ event.name }}</h5>
+
+                        {% if event.state == 2 %}
+                        <span class="badge bg-success ms-2">En curso</span>
+                        <a href="{{ url_for('admin_attendance', event_id=event.id_event) }}"
+                           class="btn btn-outline-primary btn-sm">
+                            <i class="bi bi-check-square"></i>
+                            Registrar asistencia
+                        </a>
+                        {% endif %}
+                    </div>
+
+                    <p class="card-text text-muted">
+                        {{ event.description }}
+                    </p>
+
+                    <small class="text-success">
+                        <i class="bi bi-calendar-event"></i>
+                        {{ event.date.strftime('%d %b %Y') }}
+                        · {{ event.time_start }}
+                        · {{ event.hours }}h
+                    </small>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

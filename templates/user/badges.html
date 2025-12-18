@@ -1,0 +1,54 @@
+{% extends 'layouts/base_user.html' %}
+
+{% block title %}Mis Sellos{% endblock %} <!-- Titulo que aparece en la pestaña del navegador -->
+
+{% block content %}
+
+    <div class="container py-4">
+        <header class="page-header">
+            <h1>Mis Sellos</h1>
+        </header>
+
+        <div class="row g-3">
+
+            {% for badge in badges %}
+            <div class="col-6">
+                <div class="seal-card {% if not badge.obtained %}opacity-50{% endif %}">
+
+                    <div class="seal-circle {% if not badge.obtained %}locked-circle{% endif %}">
+                        {% if badge.obtained %}
+                            <img src="{{ badge.image }}" alt="{{ badge.name }}">
+                        {% else %}
+                            <!-- Imagen vacía para el caso de bloqueado, o puedes dejarlo vacío -->
+                        {% endif %}
+                        <span class="seal-badge">
+                            {{ badge.date.strftime('%b') }}
+                        </span>
+                    </div>
+
+                    <div class="seal-title">
+                        {{ badge.name }}
+                    </div>
+
+                    <div class="seal-date">
+                        {% if badge.obtained %}
+                            <i class="bi bi-check-circle-fill text-success"></i>
+                            {{ badge.date.strftime('%d %b %Y') }}
+                        {% else %}
+                            <i class="bi bi-lock-fill text-muted"></i>
+                            Bloqueado
+                        {% endif %}
+                    </div>
+
+                </div>
+            </div>
+            {% endfor %}
+
+            {% if badges|length == 0 %}
+            <p class="text-muted text-center">No tienes sellos aún</p>
+            {% endif %}
+
+        </div>
+    </div>
+
+{% endblock %}

@@ -1,1 +1,8 @@
-Flask==2.3.2
+-----------------------------
+PASOS PARA EL ENTORNO VIRTUAL
+-----------------------------
+py -3 -m venv .venv
+.venv\Scripts\activate
+pip install Flask
+pip install Flask-MySQLdb
+python app.py

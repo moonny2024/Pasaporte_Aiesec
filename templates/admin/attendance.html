@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Registrar asistencia</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+
+    <style>
+        body {
+            background: #f4f6f9;
+        }
+
+        .user-row {
+            padding: 10px 12px;
+            border-radius: 10px;
+            background: #fff;
+            margin-bottom: 8px;
+            box-shadow: 0 2px 6px rgba(0,0,0,.06);
+        }
+    </style>
+</head>
+<body>
+
+<div class="container py-4">
+
+    <!-- Encabezado -->
+    <div class="d-flex align-items-center mb-4">
+        <a href="{{ url_for('admin_events') }}" class="btn btn-outline-secondary btn-sm me-3">
+            <i class="bi bi-arrow-left"></i>
+        </a>
+        <div>
+            <h4 class="mb-0">Registrar asistencia</h4>
+            <small class="text-muted">
+                Evento: <strong>{{ event.name }}</strong>
+            </small>
+        </div>
+    </div>
+
+    <!-- Buscador -->
+    <div class="mb-3">
+        <input
+            type="text"
+            id="searchUser"
+            class="form-control"
+            placeholder="Buscar por nombre o apellido">
+    </div>
+
+    <!-- Lista de usuarios -->
+    <div>
+
+        {% for user in users %}
+        <div class="d-flex justify-content-between align-items-center user-row user-item"
+             data-name="{{ (user.name ~ ' ' ~ user.lastname)|lower }}">
+
+            <div>
+                <strong>{{ user.lastname }}</strong>, {{ user.name }}
+            </div>
+
+            <div>
+                {% if user.attended == 1 %}
+                    <span class="badge bg-success">
+                        <i class="bi bi-check-circle-fill"></i> Asistió
+                    </span>
+                {% else %}
+                    <button
+                        class="btn btn-success btn-sm"
+                        data-bs-toggle="modal"
+                        data-bs-target="#confirmModal"
+                        data-user="{{ user.id_user }}"
+                        data-name="{{ user.name }} {{ user.lastname }}">
+                        <i class="bi bi-check-lg"></i> Marcar
+                    </button>
+                {% endif %}
+            </div>
+        </div>
+        {% endfor %}
+
+        {% if users|length == 0 %}
+        <p class="text-center text-muted mt-4">
+            No hay usuarios disponibles
+        </p>
+        {% endif %}
+
+    </div>
+</div>
+
+<!-- Modal de confirmación -->
+<div class="modal fade" id="confirmModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <form method="POST"
+              action="{{ url_for('admin_attendance', event_id=event_id) }}">
+
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Confirmar asistencia</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+
+                <div class="modal-body">
+                    ¿Deseas registrar la asistencia de
+                    <strong id="userName"></strong>?
+                    <input type="hidden" name="user_id" id="userId">
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary"
+                            data-bs-dismiss="modal">
+                        Cancelar
+                    </button>
+                    <button type="submit" class="btn btn-success">
+                        Confirmar
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<!-- Scripts -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+    // Filtro de usuarios
+    document.getElementById('searchUser').addEventListener('keyup', function () {
+        const value = this.value.toLowerCase();
+        document.querySelectorAll('.user-item').forEach(row => {
+            row.style.display = row.dataset.name.includes(value) ? '' : 'none';
+        });
+    });
+
+    // Pasar datos al modal
+    const modal = document.getElementById('confirmModal');
+    modal.addEventListener('show.bs.modal', function (event) {
+        const button = event.relatedTarget;
+        document.getElementById('userId').value = button.dataset.user;
+        document.getElementById('userName').textContent = button.dataset.name;
+    });
+</script>
+
+</body>
+</html>

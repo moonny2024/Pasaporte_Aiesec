@@ -1,222 +1,149 @@
-/* Importación de fuentes */
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto:wght@400;700&display=swap');
-
-:root {
-    /* Paleta de colores basada en la imagen */
-    --color-background-light: #FBF8F2; /* Fondo Crema Claro */
-    --color-border-dark: #D4A373; /* Tostado/Marrón para bordes y acentos */
-    --color-accent-gold: #E5B450; /* Dorado para marcos */
-    --color-text-dark: #333; /* Texto principal */
-    --color-name: #8B0000; /* Rojo/Marrón oscuro para el nombre */
-    --color-tag-bg: #FFE0A0; /* Fondo de las etiquetas (tags) */
-    --color-tag-text: #8B0000; /* Texto de las etiquetas */
-}
-
-/* Estilos Base / General */
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
-
-body {
-    font-family: 'Roboto', sans-serif;
-    background-color: var(--color-background-light);
-    color: var(--color-text-dark);
-    line-height: 1.5;
-}
-
-.profile-page-container {
-    display: flex;
+main {
+    padding-top: 3vh;
     justify-content: center;
     align-items: center;
-    min-height: 100vh;
-    padding: 20px;
+    min-height: 50vh;
 }
 
-/* ---------------------------------------------------------------------- */
-/* 1. ESTILOS BASE DE LA TARJETA (MÓVIL POR DEFECTO) */
-/* ---------------------------------------------------------------------- */
-.membership-card {
-    /* Dimensiones que simulan un documento en móvil */
-    width: 100%;
-    max-width: 400px; 
-    padding: 30px 25px;
-    background-color: white;
-    border: 2px solid var(--color-border-dark);
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-    text-align: center;
+.container {
+    display: grid;
+    justify-content: center;
+    align-items: center;
 }
 
-/* Header: "AIESEC MEMBRESÍA" */
-.card-header {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.3em;
-    font-weight: 700;
-    letter-spacing: 2px;
-    margin-bottom: 25px;
+/* TARJETA */
+.passport {
+    font-family: 'Georgia', serif;
+    width: 340px;
+    background: #fff6e9;
+    border-radius: 18px;
+    padding: 22px;
     position: relative;
-    padding-bottom: 10px;
-    color: var(--color-text-dark);
+    box-shadow: 0 15px 40px rgba(0,0,0,.5);
 }
 
-.card-header::after {
-    content: '';
+/* MARCO */
+.passport::before {
+    content: "";
     position: absolute;
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 80px;
-    height: 1px;
-    border-bottom: 1px solid var(--color-accent-gold);
+    inset: 10px;
+    border: 2px solid #f3c97a;
+    border-radius: 14px;
 }
 
-/* Sección de Foto de Perfil */
-.profile-photo-section {
-    margin-bottom: 20px;
+/* HEADER */
+.passport-header {
+    text-align: center;
+    font-size: 18px;
+    letter-spacing: 2px;
+    margin-bottom: 14px;
 }
 
-.photo-frame {
+.passport-header::after, .footer::before {
+    content: "";
+    display: block;
+    width: 60px;
+    height: 2px;
+    background: #f3c97a;
+    margin: 8px auto;
+}
+
+/* FOTO */
+.photo {
     width: 120px;
-    height: 150px;
-    border: 1px solid var(--color-accent-gold);
+    height: 160px;
+    background: #e2e2e2;
     margin: 0 auto;
+    border: 3px solid #f3c97a;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* NOMBRE */
+.section {
+    text-align: center;
+    margin-top: 12px;
+}
+
+.label {
+    font-size: 11px;
+    letter-spacing: 1px;
+    color: #555;
+}
+
+.value {
+    font-size: 18px;
+    font-weight: bold;
+    color: #8b0000;
+}
+
+/* INFO */
+.info {
+    margin-top: 16px;
+    font-size: 13px;
+}
+
+.info-row {
+    display: flex;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+.info-row i {
+    width: 20px;
+    color: #c08b2a;
+}
+
+.badge {
+    background: #f3c97a;
+    padding: 4px 8px;
+    border-radius: 6px;
+    font-size: 11px;
+    margin-left: auto;
+}
+
+/* SELLOS */
+.stamps {
     display: flex;
     justify-content: center;
-    align-items: center;
-    position: relative;
-    /* Las esquinas doradas */
-    border-image: linear-gradient(to top right, var(--color-accent-gold) 30%, transparent 30%, transparent 70%, var(--color-accent-gold) 70%);
-    border-image-slice: 1;
-    /* Ajuste fino para simular las esquinas de la imagen */
-    border-width: 4px; 
+    gap: 10px;
+    margin: 16px 0;
 }
 
-.profile-placeholder-icon {
-    font-size: 4em;
-    color: #CCC;
-}
-
-/* Sección de Nombre */
-.name-section {
-    margin-bottom: 20px;
-    padding-bottom: 15px;
-    border-bottom: 1px dashed var(--color-accent-gold); /* Línea punteada de la imagen */
-}
-
-.name-section .label {
-    display: block;
-    font-size: 0.75em;
-    color: #777;
-    margin-bottom: 5px;
-}
-
-.full-name {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.5em;
-    font-weight: 700;
-    color: var(--color-name);
-}
-
-/* Sección de Detalles (Rol, Área, Ingreso) */
-.details-section {
-    padding-top: 15px;
-}
-
-.detail-line {
+.stamp {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    border: 2px dashed;
     display: flex;
     align-items: center;
-    text-align: left;
-    margin: 15px 0;
-    padding: 0 10px;
-    position: relative;
+    justify-content: center;
+    font-size: 10px;
 }
 
-.detail-icon {
-    font-size: 1.1em;
-    color: var(--color-border-dark);
-    width: 25px;
+.stamp.aiesec {
+    border-color: #c08b2a;
+    color: #c08b2a;
+}
+
+.stamp.year {
+    border-color: #ff6b6b;
+    color: #ff6b6b;
+}
+
+/* FOOTER */
+.footer {
     text-align: center;
-}
-
-.detail-label {
-    font-weight: 700;
-    font-size: 0.9em;
-    margin-left: 10px;
-    flex-grow: 1; /* Permite que el label empuje el valor a la derecha */
-}
-
-.detail-value {
-    font-weight: 700;
-    font-size: 0.9em;
-    padding: 5px 10px;
-    border-radius: 4px;
-    color: var(--color-tag-text);
-    background-color: var(--color-tag-bg);
-}
-
-.detail-subtext {
-    /* Texto "PASSPORT" en la línea de ingreso */
-    font-size: 0.7em;
-    color: #777;
-    margin-right: 10px;
-}
-
-.detail-separator {
-    border: none;
-    border-top: 1px dashed var(--color-accent-gold);
-    width: 80%;
-    margin: 10px auto;
-}
-
-/* ---------------------------------------------------------------------- */
-/* 2. MEDIA QUERY PARA PC/ESCRITORIO (MIN-WIDTH: 768PX) */
-/* ---------------------------------------------------------------------- */
-@media (min-width: 768px) {
-    
-    .profile-page-container {
-        /* Se centra el contenido en la pantalla, pero no forzamos 100vh */
-        padding: 50px;
-    }
-
-    .membership-card {
-        /* Se permite un ancho mayor en PC */
-        max-width: 600px;
-        padding: 40px 50px;
-    }
-
-    .card-header {
-        font-size: 1.8em;
-        margin-bottom: 40px;
-    }
-
-    .photo-frame {
-        width: 150px; /* Foto más grande */
-        height: 180px;
-    }
-
-    .full-name {
-        font-size: 2em;
-    }
-
-    .details-section {
-        /* En PC, podemos alinear los detalles mejor */
-        display: grid;
-        grid-template-columns: 1fr; /* Mantenemos una columna por detalle */
-        gap: 15px;
-    }
-
-    .detail-line {
-        padding: 0 30px;
-        margin: 0;
-    }
-
-    .detail-label {
-        font-size: 1em;
-    }
-
-    .detail-value {
-        font-size: 1em;
-        padding: 7px 15px;
-    }
+    font-size: 11px;
+    letter-spacing: 3px;
+    color: #666;
 }
