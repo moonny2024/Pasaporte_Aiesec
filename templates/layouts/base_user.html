@@ -22,8 +22,30 @@
 
 <body>    
 {% include 'components/header_user.html' %}
-    <main>
-        {% block content %}{% endblock %}
+    <main class="d-flex " >
+        <div  class="row col-lg-2 col-md-3 ">
+        <nav class="sidebar" id="sidebarMenu">
+             <ul class="nav-list px-1">
+                <li class="nav-item">
+                    <a href="{{ url_for('badges') }}"><i class="far fa-circle nav-icon"></i> Sellos</a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ url_for('achievements') }}"><i class="far fa-circle nav-icon"></i> Logros y recompensas</a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ url_for('progress') }}"><i class="far fa-circle nav-icon"></i> Tu progreso</a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ url_for('events') }}"><i class="far fa-circle nav-icon"></i> Eventos</a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ url_for('birthdays') }}"><i class="far fa-circle nav-icon"></i> Cumpleaños</a>
+                </li>
+            </ul>
+        </nav>
+        </div>
+        <div class="row col-lg-10 col-md-9 px-5 ">{% block content %}{% endblock %}</div>
+
     </main>
 {% include 'components/nav_user.html' %}
 </body>
