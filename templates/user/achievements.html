@@ -1,0 +1,58 @@
+{% extends 'layouts/base_user.html' %}
+
+{% block title %}Mis Logros{% endblock %}
+
+{% block content %}
+    <div class="container py-4">
+        <header class="page-header">
+            <h1>Logros y Reconocimientos</h1>
+        </header>
+
+        <!-- PROGRESO -->
+        <div class="progress-card">
+            <div class="progress-info">
+                <span>3/8<br><small>Logros</small></span>
+                <span style="color:#1ecb6b;">38%<br><small>Completado</small></span>
+            </div>
+            <div class="progress-bar">
+                <div class="progress-fill"></div>
+            </div>
+        </div>
+
+        <!-- GRID -->
+        <div class="grid">
+
+            <!-- LOGRO -->
+            <div class="achievement common">
+                <div class="icon"><i class="bi bi-award"></i></div>
+                <div class="title">Primer Paso</div>
+                <div class="desc">Asistir a tu primera reunión</div>
+                <div class="badge">COMMON</div>
+                <div class="date"><i class="bi bi-calendar"></i> 2024-09-15</div>
+            </div>
+
+            <div class="achievement mythic">
+                <div class="icon"><i class="bi bi-trophy"></i></div>
+                <div class="title">MVP del Mes</div>
+                <div class="desc">Reconocimiento como el miembro más valioso</div>
+                <div class="badge">MÍTICO</div>
+                <div class="date"><i class="bi bi-calendar"></i> 2024-10-01</div>
+            </div>
+
+            <div class="achievement rare">
+                <div class="icon"><i class="bi bi-star"></i></div>
+                <div class="title">100% Asistencia</div>
+                <div class="desc">Asistencia perfecta durante un mes</div>
+                <div class="badge">RARE</div>
+                <div class="date"><i class="bi bi-calendar"></i> 2024-09-28</div>
+            </div>
+
+            <div class="achievement locked">
+                <div class="icon"><i class="bi bi-people"></i></div>
+                <div class="title">Líder LEC</div>
+                <div class="desc">Participar activamente en Leadership Experience Conference</div>
+                <div class="badge">RARE</div>
+            </div>
+        </div>        
+    </div>
+{% endblock %}

@@ -1,0 +1,39 @@
+.bottom-nav {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        background: #ffffff;
+        border-top: 1px solid #ddd;
+        display: flex;
+        justify-content: space-around;
+        padding: 6px 0;
+        z-index: 1000;
+    }
+
+    .bottom-nav .nav-item {
+        flex: 1;
+        text-align: center;
+        color: #888;
+        text-decoration: none;
+        font-size: 12px;
+    }
+
+    .bottom-nav .nav-item i {
+        font-size: 20px;
+        display: block;
+    }
+
+    .bottom-nav .nav-item.active {
+        color: #ffc107;
+        font-weight: 600;
+    }
+
+    .bottom-nav .nav-item.active i {
+        color: #ffc107;
+    }
+
+    /* Espacio para que no tape el contenido */
+    body {
+        padding-bottom: 70px;
+    }

@@ -1,0 +1,31 @@
+<nav class="bottom-nav">
+    <a href="{{ url_for('badges') }}"
+       class="nav-item {% if active == 'badges' %}active{% endif %}">
+        <i class="bi bi-award"></i>
+        <span>Sellos</span>
+    </a>
+
+    <a href="{{ url_for('events') }}"
+       class="nav-item {% if active == 'events' %}active{% endif %}">
+        <i class="bi bi-calendar-event"></i>
+        <span>Eventos</span>
+    </a>
+
+    <a href="{{ url_for('logros') }}"
+       class="nav-item {% if active == 'logros' %}active{% endif %}">
+        <i class="bi bi-person"></i>
+        <span>Logros</span>
+    </a>
+
+    <a href="#"
+       class="nav-item {% if active == 'progreso' %}active{% endif %}">
+        <i class="bi bi-person"></i>
+        <span>Progreso</span>
+    </a>
+
+    <a href="#"
+       class="nav-item {% if active == 'cumpleaños' %}active{% endif %}">
+        <i class="bi bi-calendar-event"></i>
+        <span>Cumpleaños</span>
+    </a>
+</nav>

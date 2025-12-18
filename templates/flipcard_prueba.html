@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Flip Card Demo</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- Bootstrap Icons -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+
+<style>
+body {
+    background: #f3f4f6;
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+/* CONTENEDOR */
+.flip-card {
+    width: 220px;
+    perspective: 1000px;
+    cursor: pointer;
+}
+
+/* INTERNO */
+.flip-inner {
+    position: relative;
+    width: 100%;
+    height: 260px;
+    transition: transform 0.7s ease;
+    transform-style: preserve-3d;
+}
+
+/* ACTIVO */
+.flip-card.flipped .flip-inner {
+    transform: rotateY(180deg);
+}
+
+/* CARAS */
+.flip-front,
+.flip-back {
+    position: absolute;
+    inset: 0;
+    backface-visibility: hidden;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0,0,0,.15);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+/* FRENTE */
+.flip-front {
+    background: #fffbe6;
+    border: 2px solid #f5b400;
+}
+
+.flip-front i {
+    font-size: 36px;
+    color: #f5b400;
+}
+
+.flip-front h3 {
+    margin: 12px 0 4px;
+    font-size: 16px;
+}
+
+.flip-front p {
+    font-size: 13px;
+    color: #555;
+    text-align: center;
+    padding: 0 12px;
+}
+
+/* ATRÁS */
+.flip-back {
+    background: #f5b400;
+    color: white;
+    transform: rotateY(180deg);
+}
+
+.flip-back h4 {
+    margin-bottom: 6px;
+}
+
+.flip-back p {
+    font-size: 14px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="flip-card" onclick="this.classList.toggle('flipped')">
+    <div class="flip-inner">
+
+        <!-- FRENTE -->
+        <div class="flip-front">
+            <i class="bi bi-award"></i>
+            <h3>Primer Paso</h3>
+            <p>Asistir a tu primera reunión</p>
+        </div>
+
+        <!-- ATRÁS -->
+        <div class="flip-back">
+            <h4>¡Logro desbloqueado!</h4>
+            <p>+50 puntos</p>
+        </div>
+
+    </div>
+</div>
+
+</body>
+</html>

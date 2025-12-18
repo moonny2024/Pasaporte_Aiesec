@@ -1,0 +1,59 @@
+{% extends 'layouts/base_user.html' %}
+
+{% block title %}Mi Progreso{% endblock %}
+
+{% block style %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/progress.css') }}">
+{% endblock %}
+
+{% block content %}
+
+<main class="main-content">
+<div class="progress-page-container">
+    <div class="progress-content-area">
+
+        <section class="progress-quote-section">
+            <div class="progress-profile-photo">
+                <img src="{{ url_for('static', filename='img/users/profile3.png')}}" alt="Foto de Perfil" class="progress-photo-img"> 
+            </div>
+            <p class="progress-quote">
+                "El liderazgo es la capacidad de transformar la visión en realidad."
+            </p>
+            <div class="progress-aiesec-experience">
+                <i class="fas fa-heart"></i> AIESEC Experience <i class="fas fa-heart"></i>
+            </div>
+        </section>
+
+        <section class="progress-stats-section">
+            <h2 class="progress-section-title">Tu Progreso</h2>
+            <div class="progress-stats-grid">
+                <div class="progress-stat-item">
+                    <div class="progress-stat-icon progress-stat-blue"><i class="fas fa-chart-line"></i></div>
+                    <span class="progress-stat-number">87%</span>
+                    <span class="progress-stat-label">Asistencia</span>
+                </div>
+                <div class="progress-stat-item">
+                    <div class="progress-stat-icon progress-stat-green"><i class="fas fa-award"></i></div>
+                    <span class="progress-stat-number">3</span>
+                    <span class="progress-stat-label">Logros</span>
+                </div>
+                <div class="progress-stat-item">
+                    <div class="progress-stat-icon progress-stat-purple"><i class="far fa-calendar-alt"></i></div>
+                    <span class="progress-stat-number">3</span>
+                    <span class="progress-stat-label">Meses</span>
+                </div>
+            </div>
+        </section>
+
+        <button class="progress-cta-button">
+            <i class="fas fa-star-of-life progress-cta-icon"></i> ¡Sigue coleccionando experiencias! <i class="fas fa-star-of-life progress-cta-icon"></i>
+        </button>
+
+        <p class="progress-footer-text">
+            Desarrollando líderes para un mundo sustentable
+        </p>
+    </div>
+</div>
+</main>
+
+{% endblock %}

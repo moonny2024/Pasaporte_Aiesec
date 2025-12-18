@@ -1,0 +1,63 @@
+{% extends 'layouts/base_user.html' %}
+
+{% block title %}Mi Perfil{% endblock %}
+
+{% block style %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/profile.css') }}">
+{% endblock %}
+
+{% block content %}
+<div class="passport container py-4">
+    <div class="passport-header">
+        AIESEC MEMBRESÍA
+    </div>
+
+    <div class="photo">
+            <img src="{{ url_for('static', filename='img/users/profile1.jpg') }}" alt="Imagen de prueba">
+            <!-- <i class="bi bi-person"></i> -->
+    </div>
+
+    <div class="section">
+        <div class="label">NOMBRE COMPLETO</div>
+        <div class="value">
+            {{ user.fullname }}
+        </div>
+    </div>
+
+    <div class="info">
+
+        <div class="info-row">
+            <i class="bi bi-briefcase"></i>
+            Rol
+            <span class="badge">{{ user.role }}</span>
+        </div>
+
+        <div class="info-row">
+            <i class="bi bi-geo-alt"></i>
+            Área
+            <span class="badge">{{ user.area }}</span>
+        </div>
+
+        <div class="info-row">
+            <i class="bi bi-calendar"></i>
+            Ingreso
+            <span class="badge">{{ user.date_start }}</span>
+        </div>
+
+    </div>
+
+    <div class="stamps">
+        <div class="stamp aiesec">AIESEC</div>
+        <div class="stamp year">{{ user.date_start[:4] }}</div>
+    </div>
+
+    <div class="footer">
+        PASSPORT
+    </div>
+</div>
+<script>
+  const yearDiv = document.querySelector('.stamp.year');
+  const currentYear = new Date().getFullYear();
+  yearDiv.textContent = currentYear;
+</script>
+{% endblock %}

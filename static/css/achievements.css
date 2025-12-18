@@ -1,228 +1,154 @@
-/* Variables de color y tipografía */
-:root {
-    --color-bg-page: #F4F4F4;
-    --color-bg-card: #FFFFFF;
-    --color-text-dark: #333;
-    --color-text-light: #555;
-    --color-accent-gold: #FFD700; /* Copa del encabezado */
-    --color-progress-bar: #4CAF50; /* Verde de la barra */
-
-    /* Colores de Rareza (Rareza de los logros) */
-    --color-common: #F5C75F;   /* Amarillo (Tag) */
-    --color-common-light: #FFF8E6; /* Fondo de la tarjeta Common */
-    
-    --color-mythic: #D7263D;   /* Rojo (Tag) */
-    --color-mythic-light: #FFEDED; /* Fondo de la tarjeta Mythic */
-    
-    --color-rare: #3B97FF;     /* Azul (Tag) */
-    --color-rare-light: #EBF5FF; /* Fondo de la tarjeta Rare */
-    
-    --color-epic: #9C27B0;     /* Morado (Tag) */
-    --color-epic-light: #F7E6FF; /* Fondo de la tarjeta Epic */
-}
-
-/* Base y Reset */
-
-
-.progress-page-container {
-    max-width: 1200px; /* Ancho máximo en PC */
-    margin: 40px auto;
-    padding: 20px;
-    background-color: white;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-}
-
-/* ---------------------------------------------------------------------- */
-/* 1. ENCABEZADO Y RESUMEN */
-/* ---------------------------------------------------------------------- */
-.progress-header {
+/* HEADER */
+.section-title {
     display: flex;
     align-items: center;
-    padding: 15px 0;
-    margin-bottom: 25px;
-    border-bottom: 1px solid #EEE;
+    gap: 10px;
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 14px;
 }
 
-.header-icon {
-    font-size: 1.8em;
-    color: var(--color-accent-gold);
-    margin-right: 15px;
+.section-title i {
+    background: #f5b400;
+    color: white;
+    padding: 8px;
+    border-radius: 50%;
 }
 
-.header-titles {
-    font-size: 1.6em;
-    font-weight: 700;
-    color: var(--color-text-dark);
-    
+/* PROGRESO */
+.progress-card {
+    background: white;
+    border-radius: 14px;
+    padding: 14px;
+    box-shadow: 0 6px 20px rgba(0,0,0,.08);
+    margin-bottom: 18px;
 }
 
-/* Resumen (Stats y Barra) */
-.progress-summary {
-    text-align: center;
-    margin-bottom: 30px;
-}
-
-.progress-stats {
+.progress-info {
     display: flex;
-    justify-content: center;
-    gap: 40px;
-    margin-bottom: 15px;
+    justify-content: space-between;
+    font-size: 14px;
+    margin-bottom: 8px;
 }
 
-.stat-item {
-    display: flex;
-    flex-direction: column;
-}
-
-.stat-number {
-    font-size: 2em;
-    font-weight: 700;
-    color: var(--color-text-dark);
-}
-
-.stat-item.completed .stat-number {
-    color: var(--color-progress-bar); /* Color verde para el porcentaje */
-}
-
-.stat-label {
-    font-size: 0.9em;
-    color: var(--color-text-light);
-}
-
-/* Barra de Progreso */
-.progress-bar-container {
-    background-color: #EEE;
-    height: 10px;
-    border-radius: 5px;
-    width: 90%;
-    max-width: 500px;
-    margin: 0 auto;
-    overflow: hidden;
+.progress-info span {
+    font-weight: 600;
 }
 
 .progress-bar {
+    height: 8px;
+    background: #e6e6e6;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.progress-fill {
+    width: 38%;
+    background: #1ecb6b;
     height: 100%;
-    width: var(--progress-width); /* Se define en el HTML (38%) */
-    background-color: var(--color-progress-bar);
-    border-radius: 5px;
-    transition: width 0.5s ease-in-out;
+    border-radius: 10px;
 }
 
-/* ---------------------------------------------------------------------- */
-/* 2. TARJETAS DE LOGROS (RESPONSIVE GRID) */
-/* ---------------------------------------------------------------------- */
-.achievements-grid {
+/* GRID */
+.grid {
     display: grid;
-    /* Móvil: Una columna, Tablet: Dos columnas, PC: Tres o más */
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 25px;
-    padding-top: 20px;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
 }
 
-.achievement-card {
-    padding: 20px;
-    border-radius: 8px;
+/* TARJETAS */
+.achievement {
+    background: white;
+    border-radius: 16px;
+    padding: 16px;
     text-align: center;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s, box-shadow 0.3s;
-    position: relative;
-    border: 1px solid #DDD;
+    box-shadow: 0 6px 20px rgba(0,0,0,.08);
 }
 
-/* Fondos de las tarjetas según la rareza */
-.common-bg { background-color: var(--color-common-light); }
-.mythic-bg { background-color: var(--color-mythic-light); }
-.rare-bg { background-color: var(--color-rare-light); }
-.epic-bg { background-color: var(--color-epic-light); }
-
-
-/* Iconos de las tarjetas */
-.achievement-icon-wrapper {
-    width: 80px;
-    height: 80px;
-    margin: 0 auto 15px;
+.icon {
+    width: 52px;
+    height: 52px;
     border-radius: 50%;
+    margin: 0 auto 10px;
     display: flex;
-    justify-content: center;
     align-items: center;
-    background-color: white;
-    border: 2px solid #EEE;
+    justify-content: center;
+    font-size: 22px;
 }
 
-.achievement-icon {
-    font-size: 2.5em;
+/* TEXTOS */
+.title {
+    font-weight: 600;
+    font-size: 14px;
 }
 
-.icon-common { color: var(--color-common); }
-.icon-mythic { color: var(--color-mythic); }
-.icon-rare { color: var(--color-rare); }
-.icon-epic { color: var(--color-epic); }
-
-
-.achievement-title {
-    font-size: 1.2em;
-    margin-bottom: 5px;
-    font-weight: 700;
+.desc {
+    font-size: 12px;
+    color: #555;
+    margin: 6px 0 10px;
 }
 
-.achievement-description {
-    font-size: 0.9em;
-    color: var(--color-text-light);
-    margin-bottom: 15px;
-    min-height: 40px; /* Asegura un alto mínimo para la descripción */
-}
-
-/* Etiquetas de Rareza */
-.achievement-tag {
+/* BADGES */
+.badge {
     display: inline-block;
-    padding: 5px 10px;
-    border-radius: 4px;
-    font-size: 0.75em;
-    font-weight: 700;
+    font-size: 11px;
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-weight: 600;
+    margin-bottom: 6px;
+}
+
+.date {
+    font-size: 11px;
+    color: #888;
+}
+
+/* VARIANTES */
+.common {
+    border: 2px solid #f5c542;
+    background: #fffbe6;
+}
+
+.common .icon {
+    background: #fff3c2;
+    color: #f5b400;
+}
+
+.common .badge {
+    background: #f5b400;
     color: white;
-    margin-bottom: 15px;
 }
 
-.tag-common { background-color: var(--color-common); }
-.tag-mythic { background-color: var(--color-mythic); }
-.tag-rare { background-color: var(--color-rare); }
-.tag-epic { background-color: var(--color-epic); }
-
-
-/* Fecha */
-.achievement-date {
-    font-size: 0.85em;
-    color: var(--color-text-light);
+.mythic {
+    border: 2px solid #ff5a5a;
+    background: #fff0f0;
 }
 
-.achievement-date .far, .achievement-date .fas {
-    margin-right: 5px;
+.mythic .icon {
+    background: #ffe1e1;
+    color: #ff5a5a;
 }
 
-/* Estilo para logros no completados/bloqueados */
-.achievement-card.locked {
-    opacity: 0.6;
-    border: 1px dashed #AAA;
+.mythic .badge {
+    background: #ff5a5a;
+    color: white;
 }
 
-.achievement-card:hover:not(.locked) {
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-    transform: translateY(-5px);
+.rare {
+    border: 2px solid #4a90ff;
+    background: #eef4ff;
 }
 
-
-/* ---------------------------------------------------------------------- */
-/* 3. MEDIA QUERY PARA PC/ESCRITORIO (MIN-WIDTH: 900PX) */
-/* ---------------------------------------------------------------------- */
-@media (min-width: 900px) {
-    .achievements-grid {
-        grid-template-columns: repeat(3, 1fr); /* 3 columnas en pantallas grandes */
-    }
+.rare .icon {
+    background: #dbe9ff;
+    color: #4a90ff;
 }
 
-/* 4. MEDIA QUERY PARA TABLET (entre 600px y 899px) */
-@media (min-width: 600px) and (max-width: 899px) {
-    .achievements-grid {
-        grid-template-columns: repeat(2, 1fr); /* 2 columnas en tablets */
-    }
+.rare .badge {
+    background: #4a90ff;
+    color: white;
+}
+
+.locked {
+    opacity: .5;
 }

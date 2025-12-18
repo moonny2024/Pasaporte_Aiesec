@@ -1,0 +1,81 @@
+{% extends 'layouts/base_user.html' %}
+
+{% block title %}Cumpleaños{% endblock %}
+
+{% block style %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/birthdays.css') }}">
+{% endblock %}
+
+{% block content %}
+
+<div class="dashboard-container container">
+    <main class="main-content">
+        <div class="birthdays-page-content">
+            <header class="page-header">
+                <i class="fas fa-gift header-icon"></i>
+                <h1>¡Feliz Cumpleaños!</h1>
+                <p class="header-subtitle">Celebrando a los líderes de Gen Phoenix este mes.</p>
+            </header>
+
+            <section class="current-month-card">
+                <i class="fas fa-calendar-alt calendar-month-icon"></i>
+                <span class="month-name-display">NOVIEMBRE 2025</span>
+            </section>
+
+            <main class="birthdays-list">
+                
+                <div class="birthday-card birthday-today">
+                    <div class="card-details">
+                        <img src="{{ url_for('static', filename='img/users/profile3.png') }}" alt="Avatar de Laura" class="birthday-avatar">
+                        <div class="info-group">
+                            <h3 class="member-name">Laura Ramos</h3>
+                            <p class="member-role">VP oGV - México</p>
+                        </div>
+                    </div>
+                    <div class="card-celebration">
+                        <span class="date-day">21</span>
+                        <span class="date-month">NOV</span>
+                        <button class="wish-btn today-btn"><i class="fas fa-birthday-cake"></i> ¡Es Hoy!</button>
+                    </div>
+                </div>
+
+                <div class="birthday-card birthday-upcoming">
+                    <div class="card-details">
+                        <img src="{{ url_for('static', filename='img/users/profile2.png') }}" alt="Avatar de Ricardo" class="birthday-avatar">
+                        <div class="info-group">
+                            <h3 class="member-name">Ricardo Vega</h3>
+                            <p class="member-role">Team Member - Marketing</p>
+                        </div>
+                    </div>
+                    <div class="card-celebration">
+                        <span class="date-day">27</span>
+                        <span class="date-month">NOV</span>
+                        <button class="wish-btn"><i class="fas fa-paper-plane"></i> Enviar Deseo</button>
+                    </div>
+                </div>
+                
+                <div class="birthday-card birthday-upcoming">
+                    <div class="card-details">
+                        <img src="{{ url_for('static', filename='img/users/profile3.png') }}" alt="Avatar de Ana" class="birthday-avatar">
+                        <div class="info-group">
+                            <h3 class="member-name">Ana Mendieta</h3>
+                            <p class="member-role">Team Leader - Finanzas</p>
+                        </div>
+                    </div>
+                    <div class="card-celebration">
+                        <span class="date-day">04</span>
+                        <span class="date-month">DIC</span>
+                        <button class="wish-btn"><i class="fas fa-paper-plane"></i> Enviar Deseo</button>
+                    </div>
+                </div>
+
+            </main>
+            
+            <footer class="birthdays-footer">
+                <p>¡No olvides saludar a tus compañeros!</p>
+            </footer>
+        </div>
+    </main>            
+</div>
+
+{% endblock %}
