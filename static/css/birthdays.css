@@ -2,6 +2,7 @@
 :root {
     --color-bg-page: #FFF9F3; /* Fondo muy claro y cálido */
     --color-text-dark: #333;
+    --color-text-light: #666; /* Texto secundario usado en subtítulos */
     --color-accent-pink: #FF69B4; /* Rosa festivo */
     --color-accent-yellow: #FFD700; /* Dorado/Amarillo */
     --color-header-bg: #8B0000; /* Rojo AIESEC oscuro */
@@ -14,22 +15,25 @@
     margin: 0;
     padding: 0;
 }
-
+ .main-content{
+    margin: 20px;
+}
 body {
     font-family: 'Roboto', sans-serif;
     background-color: var(--color-bg-page);
     color: var(--color-text-dark);
     line-height: 1.5;
     min-height: 100vh;
+
 }
 
-.birthdays-page-container {
-    max-width: 700px; 
-    margin: 40px auto; 
-    padding: 20px;
-    background-color: white;
-    border-radius: 12px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+
+
+/* Contenedor principal (coincide con clase usada en el HTML) */
+.birthdays-page-content {
+    max-width: 900px;
+    margin: 30px auto;
+    padding: 16px;
 }
 
 /* ---------------------------------------------------------------------- */
@@ -49,7 +53,7 @@ body {
 
 .page-header h1 {
     font-family: 'Pacifico', cursive; /* Fuente cursiva para un toque festivo */
-    font-size: 2.5em;
+    font-size: clamp(1.8rem, 4.5vw, 2.5rem);
     color: var(--color-header-bg);
 }
 
@@ -64,7 +68,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 10px 20px;
+    padding: 12px 20px;
     margin-bottom: 30px;
     background: linear-gradient(90deg, #FAD02E 0%, #FFCC33 100%); /* Fondo dorado/amarillo */
     border-radius: 8px;
@@ -132,7 +136,7 @@ body {
 }
 
 .member-name {
-    font-size: 1.1em;
+    font-size: 1.05em;
     font-weight: 700;
     color: var(--color-text-dark);
 }
@@ -149,7 +153,7 @@ body {
 }
 
 .date-day {
-    font-size: 1.8em;
+    font-size: 1.6em;
     font-weight: 700;
     color: var(--color-accent-pink);
     line-height: 1;
@@ -237,5 +241,36 @@ body {
     .wish-btn {
         margin-left: 10px;
         flex-grow: 1;
+    }
+}
+
+/* Tablets y desktop: usa grid responsivo para las tarjetas */
+@media (min-width: 650px) {
+    .main-content{
+    margin: 20px;
+}
+    .birthdays-list {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        gap: 16px;
+    }
+    .birthday-card {
+        flex-direction: row;
+    }
+}
+
+/* Ajustes finos en pantallas muy pequeñas */
+@media (max-width: 380px) {
+     .main-content{
+    margin: 20px;
+}
+    .birthday-avatar {
+        width: 46px;
+        height: 46px;
+        margin-right: 10px;
+    }
+    .wish-btn {
+        padding: 6px 10px;
+        font-size: 0.8em;
     }
 }

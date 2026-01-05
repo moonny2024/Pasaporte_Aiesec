@@ -45,6 +45,11 @@
         overflow: visible; /* permitir que el bump sobresalga */
         padding-top: 14px; /* espacio superior para el bump */
     }
+    .primary {
+    margin: 0 auto; /* "0" arriba/abajo, "auto" a los lados lo centra */
+    width: fit-content; /* Asegura que la caja no ocupe el 100% del ancho */
+    display: block;
+}
 
     /* Evitar que el contenido se corte detrás de la barra en móvil */
     body {

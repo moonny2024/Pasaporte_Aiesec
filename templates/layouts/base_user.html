@@ -11,7 +11,6 @@
 
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/nav_user_prueba.css') }}">
 
     <link rel="stylesheet" href="{{ url_for('static', filename='css/nav_user.css') }}">  
     <link rel="stylesheet" href="{{ url_for('static', filename='css/badges.css') }}">
@@ -44,7 +43,7 @@
             </ul>
         </nav>
         </div>
-        <div class="row col-lg-10 col-md-9 px-5 ">{% block content %}{% endblock %}</div>
+        <div class=" primary  ">{% block content %}{% endblock %}</div>
 
     </main>
 {% include 'components/nav_user.html' %}

@@ -3,56 +3,148 @@
 {% block title %}Mis Logros{% endblock %}
 
 {% block content %}
-    <div class="container py-4">
-        <header class="page-header">
-            <h1>Logros y Reconocimientos</h1>
-        </header>
+    <div class="container py-4 rr-dashboard contenedor-main">
+        <!-- HERO INTRO R&R -->
+        <div class="rr-layout">
+            <div class="rr-main">
+                <section class="rr-hero">
+                    <div class="rr-hero-content">
+                        <div class="rr-hero-top">
+                            <span class="rr-chip rr-popular"><i class="bi bi-stars"></i> R&R</span>
+                            <h2>Sistema de Reconocimientos y Recompensas</h2>
+                            <p>Recibe monedas por tus logros y canjéalas por recompensas. Algunas recompensas pueden estar bloqueadas según tu nivel.</p>
+                        </div>
+                        <div class="rr-hero-actions">
+                            <div class="rr-avatars">
+                                <img src="https://dummyimage.com/40x40/916/fff.png&text=A" alt="A"/>
+                                <img src="https://dummyimage.com/40x40/694/fff.png&text=J" alt="J"/>
+                                <img src="https://dummyimage.com/40x40/2a3/fff.png&text=K" alt="K"/>
+                            </div>
+                            <button class="btn btn-sm rr-btn">Ver reglas</button>
+                        </div>
+                    </div>
+                </section>
 
-        <!-- PROGRESO -->
-        <div class="progress-card">
-            <div class="progress-info">
-                <span>3/8<br><small>Logros</small></span>
-                <span style="color:#1ecb6b;">38%<br><small>Completado</small></span>
+                <!-- GALERÍA MONEDAS / EXPLICACIÓN -->
+                <section class="rr-coins">
+                    <article class="coin-card coin-common">
+                        <div class="coin-thumb"><i class="bi bi-coin"></i></div>
+                        <div class="coin-body">
+                            <h3>Comunes</h3>
+                            <p>Se obtienen por tareas básicas y asistencias.</p>
+                        </div>
+                    </article>
+                    <article class="coin-card coin-rare">
+                        <div class="coin-thumb"><i class="bi bi-gem"></i></div>
+                        <div class="coin-body">
+                            <h3>Raras</h3>
+                            <p>Se otorgan por metas mensuales y aportes destacados.</p>
+                        </div>
+                    </article>
+                    <article class="coin-card coin-mythic">
+                        <div class="coin-thumb"><i class="bi bi-trophy"></i></div>
+                        <div class="coin-body">
+                            <h3>Míticas</h3>
+                            <p>Reconocen logros extraordinarios e impacto en el comité.</p>
+                        </div>
+                    </article>
+                </section>
+
+                <!-- PROGRESO -->
+                <div class="progress-card">
+                    <div class="progress-info">
+                        <span>3/8<br><small>Logros</small></span>
+                        <span class="rr-green">38%<br><small>Completado</small></span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill"></div>
+                    </div>
+                </div>
+
+                <!-- LOGROS (GRID) -->
+                <div class="grid">
+                    <div class="achievement common">
+                        <div class="icon"><i class="bi bi-award"></i></div>
+                        <div class="title">Primer Paso</div>
+                        <div class="desc">Asistir a tu primera reunión</div>
+                        <div class="badge">COMMON</div>
+                        <div class="date"><i class="bi bi-calendar"></i> 2024-09-15</div>
+                    </div>
+
+                    <div class="achievement mythic">
+                        <div class="icon"><i class="bi bi-trophy"></i></div>
+                        <div class="title">MVP del Mes</div>
+                        <div class="desc">Reconocimiento como el miembro más valioso</div>
+                        <div class="badge">MÍTICO</div>
+                        <div class="date"><i class="bi bi-calendar"></i> 2024-10-01</div>
+                    </div>
+
+                    <div class="achievement rare">
+                        <div class="icon"><i class="bi bi-star"></i></div>
+                        <div class="title">100% Asistencia</div>
+                        <div class="desc">Asistencia perfecta durante un mes</div>
+                        <div class="badge">RARE</div>
+                        <div class="date"><i class="bi bi-calendar"></i> 2024-09-28</div>
+                    </div>
+
+                    <div class="achievement locked">
+                        <div class="icon"><i class="bi bi-people"></i></div>
+                        <div class="title">Líder LEC</div>
+                        <div class="desc">Participar activamente en Leadership Experience Conference</div>
+                        <div class="badge">RARE</div>
+                    </div>
+                </div>
+
+                <!-- LOGRO DEL MES -->
+                <section class="rr-last">
+                    <div class="last-card">
+                        <div class="last-thumb"><i class="bi bi-patch-check-fill"></i></div>
+                        <div class="last-body">
+                            <h4>Logro del Mes</h4>
+                            <p>Área del Mes: IGV | Miembro destacado: Jane D.</p>
+                        </div>
+                    </div>
+                </section>
             </div>
-            <div class="progress-bar">
-                <div class="progress-fill"></div>
-            </div>
+
+            <!-- SIDEBAR: RECOMPENSAS + TOTALES -->
+            <aside class="rr-sidebar">
+                <section class="rr-rewards">
+                    <h3>Recompensas</h3>
+                    <ul class="reward-list">
+                        <li class="reward">
+                            <span class="avatar"><i class="bi bi-gift"></i></span>
+                            <div class="r-body"><strong>Merch AIESEC</strong><small>Desbloqueada</small></div>
+                        </li>
+                        <li class="reward locked">
+                            <span class="avatar"><i class="bi bi-lock-fill"></i></span>
+                            <div class="r-body"><strong>Entrada Evento</strong><small>Bloqueada</small></div>
+                        </li>
+                        <li class="reward">
+                            <span class="avatar"><i class="bi bi-cup-hot"></i></span>
+                            <div class="r-body"><strong>Coffee Pass</strong><small>Disponible</small></div>
+                        </li>
+                        <li class="reward">
+                            <span class="avatar"><i class="bi bi-controller"></i></span>
+                            <div class="r-body"><strong>Game Night</strong><small>Disponible</small></div>
+                        </li>
+                    </ul>
+                </section>
+
+                <section class="rr-totals">
+                    <div class="donut">
+                        <div class="donut-center">
+                            <div class="donut-number">12,340</div>
+                            <div class="donut-label">Monedas</div>
+                        </div>
+                    </div>
+                    <div class="totals-legend">
+                        <span class="metric common">2,340</span>
+                        <span class="metric rare">6,420</span>
+                        <span class="metric mythic">4,680</span>
+                    </div>
+                </section>
+            </aside>
         </div>
-
-        <!-- GRID -->
-        <div class="grid">
-
-            <!-- LOGRO -->
-            <div class="achievement common">
-                <div class="icon"><i class="bi bi-award"></i></div>
-                <div class="title">Primer Paso</div>
-                <div class="desc">Asistir a tu primera reunión</div>
-                <div class="badge">COMMON</div>
-                <div class="date"><i class="bi bi-calendar"></i> 2024-09-15</div>
-            </div>
-
-            <div class="achievement mythic">
-                <div class="icon"><i class="bi bi-trophy"></i></div>
-                <div class="title">MVP del Mes</div>
-                <div class="desc">Reconocimiento como el miembro más valioso</div>
-                <div class="badge">MÍTICO</div>
-                <div class="date"><i class="bi bi-calendar"></i> 2024-10-01</div>
-            </div>
-
-            <div class="achievement rare">
-                <div class="icon"><i class="bi bi-star"></i></div>
-                <div class="title">100% Asistencia</div>
-                <div class="desc">Asistencia perfecta durante un mes</div>
-                <div class="badge">RARE</div>
-                <div class="date"><i class="bi bi-calendar"></i> 2024-09-28</div>
-            </div>
-
-            <div class="achievement locked">
-                <div class="icon"><i class="bi bi-people"></i></div>
-                <div class="title">Líder LEC</div>
-                <div class="desc">Participar activamente en Leadership Experience Conference</div>
-                <div class="badge">RARE</div>
-            </div>
-        </div>        
     </div>
 {% endblock %}

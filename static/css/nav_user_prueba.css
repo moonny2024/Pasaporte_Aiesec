@@ -2,7 +2,6 @@
         position: fixed;
         bottom: 0;
         left: 0;
-        width: 100%;
         background: #ffffff;
         border-top: 1px solid #ddd;
         display: flex;
@@ -11,6 +10,7 @@
         z-index: 1000;
     }
 
+   
     .bottom-nav .nav-item {
         flex: 1;
         text-align: center;
@@ -35,3 +35,25 @@
 
     /* Espacio para que no tape el contenido */
   
+
+@media (max-width: 650px) {
+    .event-card {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+ 
+    .card-details {
+        margin-bottom: 15px;
+        margin-right: 0;
+    }
+
+    .card-action {
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    .event-date-box {
+        border-right: none;
+        padding-right: 0;
+    }
+}

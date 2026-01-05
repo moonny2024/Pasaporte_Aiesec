@@ -3,57 +3,94 @@
 {% block title %}Mi Progreso{% endblock %}
 
 {% block style %}
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;500;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
 <link rel="stylesheet" href="{{ url_for('static', filename='css/progress.css') }}">
 {% endblock %}
 
 {% block content %}
 
-<main class="main-content">
+<main class="main-content contenedor-main">
 <div class="progress-page-container">
     <div class="progress-content-area">
 
         <section class="progress-quote-section">
-            <div class="progress-profile-photo">
-                <img src="{{ url_for('static', filename='img/users/profile3.png')}}" alt="Foto de Perfil" class="progress-photo-img"> 
-            </div>
-            <p class="progress-quote">
-                "El liderazgo es la capacidad de transformar la visión en realidad."
-            </p>
-            <div class="progress-aiesec-experience">
-                <i class="fas fa-heart"></i> AIESEC Experience <i class="fas fa-heart"></i>
+            <div class="header-content-wrapper">
+                <div class="header-text-group">
+                    <p class="progress-quote">
+                        "El liderazgo es la capacidad de transformar la visión en realidad."
+                    </p>
+                    <div class="progress-aiesec-experience">
+                        <i class="fas fa-heart"></i> AIESEC Experience <i class="fas fa-heart"></i>
+                    </div>
+                </div>
+                <div class="progress-profile-photo">
+                    <img src="{{ url_for('static', filename='img/users/profile3.png')}}" alt="Foto de Perfil" class="progress-photo-img"> 
+                </div>
             </div>
         </section>
 
         <section class="progress-stats-section">
-            <h2 class="progress-section-title">Tu Progreso</h2>
+            <h2 class="progress-section-title">Tu Progreso Mensual</h2>
+            
             <div class="progress-stats-grid">
                 <div class="progress-stat-item">
-                    <div class="progress-stat-icon progress-stat-blue"><i class="fas fa-chart-line"></i></div>
-                    <span class="progress-stat-number">87%</span>
-                    <span class="progress-stat-label">Asistencia</span>
+                    <div class="progress-stat-icon progress-stat-blue">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <div class="stat-info">
+                        <span class="progress-stat-label">Asistencia</span>
+                        <span class="progress-stat-number">87%</span>
+                    </div>
                 </div>
+
                 <div class="progress-stat-item">
-                    <div class="progress-stat-icon progress-stat-green"><i class="fas fa-award"></i></div>
-                    <span class="progress-stat-number">3</span>
-                    <span class="progress-stat-label">Logros</span>
+                    <div class="progress-stat-icon progress-stat-green">
+                        <i class="fas fa-award"></i>
+                    </div>
+                    <div class="stat-info">
+                        <span class="progress-stat-label">Logros</span>
+                        <span class="progress-stat-number">3</span>
+                    </div>
                 </div>
+
                 <div class="progress-stat-item">
-                    <div class="progress-stat-icon progress-stat-purple"><i class="far fa-calendar-alt"></i></div>
-                    <span class="progress-stat-number">3</span>
-                    <span class="progress-stat-label">Meses</span>
+                    <div class="progress-stat-icon progress-stat-purple">
+                        <i class="far fa-calendar-alt"></i>
+                    </div>
+                    <div class="stat-info">
+                        <span class="progress-stat-label">Meses Activos</span>
+                        <span class="progress-stat-number">3</span>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <button class="progress-cta-button">
-            <i class="fas fa-star-of-life progress-cta-icon"></i> ¡Sigue coleccionando experiencias! <i class="fas fa-star-of-life progress-cta-icon"></i>
-        </button>
+        <div class="cta-container">
+            <a class="progress-cta-button" href="{{ url_for('badges') }}">
+                <i class="fas fa-star-of-life progress-cta-icon"></i>4      ¡Sigue coleccionando experiencias!
+            </a>
+        </div>
 
         <p class="progress-footer-text">
             Desarrollando líderes para un mundo sustentable
         </p>
+
+        <!-- Miembros del mes por área (Frontend only) -->
+        <section class="members-section">
+            <h2 class="progress-section-title">Miembros del mes por área</h2>
+            <div id="members-container">
+                <div class="members-grid" id="members-grid"></div>
+                <p class="progress-footer-text" id="members-empty" style="display:none;">Aún no hay datos de miembros destacados este mes.</p>
+            </div>
+        </section>
     </div>
 </div>
 </main>
 
+<script src="{{ url_for('static', filename='js/members_of_month.js') }}"></script>
 {% endblock %}

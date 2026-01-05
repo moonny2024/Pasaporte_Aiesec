@@ -15,6 +15,7 @@
     border-radius: 50%;
 }
 
+
 /* PROGRESO */
 .progress-card {
     background: white;
@@ -151,4 +152,149 @@
 
 .locked {
     opacity: .5;
+}
+
+/* === R&R DASHBOARD === */
+:root {
+    /* Modo claro: fondo blanco con acentos del sitio */
+    --rr-bg: #ffffff;
+    --rr-bg-2: #f7f8fb; /* papel suave */
+    --rr-surface: #ffffff; /* tarjetas */
+    --rr-surface-2: #f3f5fa; /* elementos internos */
+    --rr-border: rgba(0,0,0,0.08);
+    --rr-text: #222222;
+    --rr-muted: #6b7280;
+    --rr-yellow: #ffc107; /* coincide con acento del sitio */
+    --rr-blue: #4a90ff;   /* blue para rare */
+    --rr-red: var(--main-pink, #770002); /* usa borgoña del header para míticas */
+    --rr-green: #1ecb6b;
+}
+
+.rr-dashboard {
+    color: var(--rr-text);
+}
+
+.rr-layout {
+    display: grid;
+    grid-template-columns: 1.9fr 1fr;
+    gap: 16px;
+    background: linear-gradient(180deg, var(--rr-bg) 0%, var(--rr-bg-2) 100%);
+    border-radius: 18px;
+    padding: 16px;
+}
+
+.rr-main { display: flex; flex-direction: column; gap: 16px; }
+.rr-sidebar { display: flex; flex-direction: column; gap: 16px; }
+
+/* HERO */
+.rr-hero {
+    background:
+        radial-gradient(120% 120% at 10% 30%, rgba(0,0,0,0.03), rgba(0,0,0,0) 60%),
+        linear-gradient(135deg, var(--rr-surface) 0%, var(--rr-bg-2) 100%);
+    border: 1px solid var(--rr-border);
+    border-radius: 16px;
+    padding: 18px;
+}
+
+.rr-hero-content { display: flex; justify-content: space-between; gap: 12px; }
+.rr-hero-top h2 { font-size: 20px; margin: 4px 0 6px; }
+.rr-hero-top p { color: var(--rr-muted); font-size: 13px; margin: 0; }
+
+.rr-chip { display: inline-flex; align-items: center; gap: 6px; padding: 4px 10px; border-radius: 14px; font-weight: 600; font-size: 12px; }
+.rr-popular { background: rgba(255, 193, 7, 0.2); color: #ffd66e; }
+
+.rr-hero-actions { display: flex; align-items: center; gap: 10px; }
+.rr-avatars img { width: 32px; height: 32px; border-radius: 50%; border: 1px solid var(--rr-border); }
+.rr-btn { background: rgba(0,0,0,0.04); color: var(--rr-text); border: 1px solid var(--rr-border); border-radius: 10px; }
+
+/* COINS */
+.rr-coins { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+.coin-card {
+    background: var(--rr-surface);
+    border: 1px solid var(--rr-border);
+    border-radius: 16px;
+    padding: 12px;
+    display: flex; gap: 10px; align-items: center;
+}
+.coin-thumb { width: 52px; height: 52px; border-radius: 14px; display: grid; place-items: center; font-size: 24px; }
+.coin-body h3 { margin: 0; font-size: 16px; }
+.coin-body p { margin: 2px 0 0; font-size: 12px; color: var(--rr-muted); }
+.coin-common .coin-thumb { background: rgba(255,193,7,.15); color: var(--rr-yellow); }
+.coin-rare .coin-thumb { background: rgba(74,144,255,.15); color: var(--rr-blue); }
+.coin-mythic .coin-thumb { background: rgba(119,0,2,.12); color: var(--rr-red); }
+
+/* PROGRESO (oscuro) */
+.rr-dashboard .progress-card { background: var(--rr-surface); border: 1px solid var(--rr-border); }
+.rr-dashboard .progress-info span small { color: var(--rr-muted); }
+.rr-green { color: var(--rr-green) !important; }
+.rr-dashboard .progress-bar { background: #e6e6e6; }
+.rr-dashboard .progress-fill { background: var(--rr-green); }
+
+/* LOGROS dark */
+.rr-dashboard .achievement {
+    background: var(--rr-surface);
+    border: 1px solid var(--rr-border);
+    color: var(--rr-text);
+}
+.rr-dashboard .desc { color: var(--rr-muted); }
+.rr-dashboard .icon { background: var(--rr-surface-2); color: var(--rr-text); }
+.rr-dashboard .common { border-color: rgba(245,180,0,.35); }
+.rr-dashboard .rare { border-color: rgba(99,151,255,.35); }
+.rr-dashboard .mythic { border-color: rgba(255,90,90,.35); }
+
+/* SIDEBAR */
+.rr-rewards {
+    background: var(--rr-surface);
+    border: 1px solid var(--rr-border);
+    border-radius: 16px;
+    padding: 14px;
+}
+.rr-rewards h3 { font-size: 16px; margin-bottom: 10px; }
+.reward-list { list-style: none; padding: 0; margin: 0; display: grid; gap: 8px; }
+.reward { display: flex; align-items: center; gap: 10px; padding: 8px; border-radius: 12px; background: var(--rr-surface-2); }
+.reward.locked { opacity: .6; }
+.avatar { width: 40px; height: 40px; border-radius: 50%; display: grid; place-items: center; background: rgba(0,0,0,0.06); }
+.r-body strong { display: block; font-size: 14px; }
+.r-body small { color: var(--rr-muted); }
+
+/* TOTALES */
+.rr-totals {
+    background: var(--rr-surface);
+    border: 1px solid var(--rr-border);
+    border-radius: 16px;
+    padding: 16px;
+    display: flex; flex-direction: column; align-items: center; gap: 10px;
+}
+.donut {
+    width: 180px; height: 180px; border-radius: 50%;
+    background: conic-gradient(
+        var(--rr-yellow) 0 27%,
+        var(--rr-blue) 27% 62%,
+        var(--rr-red) 62% 100%
+    );
+    position: relative;
+}
+.donut::after {
+    content: ""; position: absolute; inset: 18px; border-radius: 50%;
+    background: var(--rr-surface);
+}
+.donut-center { position: absolute; inset: 0; display: grid; place-items: center; }
+.donut-number { font-size: 22px; font-weight: 700; z-index: 1; }
+.donut-label { font-size: 12px; color: var(--rr-muted); margin-top: -18px; z-index: 1; }
+.totals-legend { display: flex; gap: 10px; }
+.metric { display: inline-flex; align-items: center; gap: 6px; padding: 4px 8px; border-radius: 12px; font-size: 12px; }
+.metric.common { background: rgba(245,180,0,.12); color: var(--rr-yellow); }
+.metric.rare { background: rgba(99,151,255,.12); color: var(--rr-blue); }
+.metric.mythic { background: rgba(119,0,2,.10); color: var(--rr-red); }
+
+/* LAST */
+.rr-last .last-card { display: flex; align-items: center; gap: 10px; background: var(--rr-surface); border: 1px solid var(--rr-border); border-radius: 16px; padding: 12px; }
+.last-thumb { width: 44px; height: 44px; border-radius: 12px; display: grid; place-items: center; background: rgba(30,203,107,.16); color: var(--rr-green); font-size: 20px; }
+.last-body h4 { margin: 0; font-size: 16px; }
+.last-body p { margin: 2px 0 0; font-size: 12px; color: var(--rr-muted); }
+
+/* RESPONSIVO */
+@media (max-width: 992px) {
+    .rr-layout { grid-template-columns: 1fr; }
+    .rr-coins { grid-template-columns: 1fr; }
 }
