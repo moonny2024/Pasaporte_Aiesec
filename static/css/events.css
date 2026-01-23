@@ -25,13 +25,9 @@ body {
 
 
 
-.events-page-container {
-    max-width: 900px; 
-    margin: 40px auto; 
-    padding: 20px;
-    background-color: white;
-    border-radius: 12px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+.events-page-content {
+    max-width: 1000px;
+    margin: 0 auto;
 }
 
 /* ---------------------------------------------------------------------- */
@@ -41,8 +37,10 @@ body {
     display: flex;
     align-items: center;
     margin-bottom: 25px;
-    padding-bottom: 10px;
-    border-bottom: 1px solid #EEE;
+    padding: 18px 20px;
+    border-radius: 12px;
+    background: linear-gradient(135deg, #f6f8fb 0%, #eef2f7 100%);
+    border: 1px solid #e8ecf2;
 }
 
 .header-icon {
@@ -89,20 +87,50 @@ body {
     gap: 15px;
 }
 
+/* Dashboard sections */
+.dashboard-section {
+    margin-bottom: 32px;
+}
+
+.section-title {
+    font-size: 1.25em;
+    font-weight: 700;
+    margin-bottom: 12px;
+}
+
+.events-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 15px;
+}
+
+@media (min-width: 768px) {
+    .events-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+.highlight-card .event-card {
+    border-left-width: 6px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    background: linear-gradient(135deg, #ffffff 0%, #fafcff 100%);
+}
+
 .event-card {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 15px 20px;
-    border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
-    transition: transform 0.2s;
+    padding: 18px 22px;
+    border-radius: 12px;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.06);
+    transition: transform 0.2s, box-shadow 0.2s;
     border-left: 5px solid #DDD;
     background-color: white;
 }
 
 .event-card:hover {
     transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
 }
 
 /* Borde de color según tipo de evento */
